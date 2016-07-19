@@ -1,6 +1,6 @@
 # Yandex Music Controls web extension
 
-![Music Controls logo](/images/logo-hd.png =400x)
+<img src="/images/logo-hd.png" align="center" height="439" width="450" alt="Music Controls Logo" >
 
 Maintained by [me](https://www.upwork.com/freelancers/~019842b9db9697a094).
 
