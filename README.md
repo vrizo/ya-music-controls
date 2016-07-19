@@ -1,6 +1,6 @@
 # Yandex Music Controls web extension
 
-![Music Controls logo](/images/logo-hd.png =400)
+![Music Controls logo](/images/logo-hd.png =400x)
 
 Maintained by [me](https://www.upwork.com/freelancers/~019842b9db9697a094).
 
