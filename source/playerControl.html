@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            width: 300px;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+        }
+        #playerControls .button {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            font-size: 0;
+            cursor: pointer;
+            background-size: 50% auto;
+            background-repeat: no-repeat;
+            background-position: center center;
+            opacity: 0.4;
+        }
+        .button:hover {
+            opacity: 1;
+        }
+        #next {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNiAxNCI+PHBhdGggZD0iTTAgNXYxNGwxMS03eiIvPjxwYXRoIGQ9Ik0xMSA1djE0bDExLTd6Ii8+PHBhdGggY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMiA2aDJ2MTJoLTJ6Ii8+PC9zdmc+);
+        }
+        .pause {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHZpZXdCb3g9IjExNiAyOTYgMjggMjgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMTE2IDI5NiAyOCAyOCI+PGc+PHBhdGggZD0iTTEyMiAzMDBoNnYyMGgtNnpNMTMyIDMwMGg2djIwaC02eiIvPjwvZz48Zz48cGF0aCBkPSJNMTIyIDMwMGg2djIwaC02ek0xMzIgMzAwaDZ2MjBoLTZ6Ii8+PC9nPjwvc3ZnPg==) !important;
+        }
+        #play {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBmaWxsPSIjMDEwMTAxIiBkPSJNNCAxNC4zMjdMMTQuOTYgOCA0IDEuNjcyeiIvPjwvc3ZnPg==);
+        }
+        #prev {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNiAxNCI+PHBhdGggZD0iTTI0IDV2MTRsLTExLTd6Ii8+PHBhdGggZD0iTTEzIDV2MTRMMiAxMnoiLz48cGF0aCBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTAgNmgydjEySDB6Ii8+PC9zdmc+);
+        }
+        .current {
+            margin: 10px auto 15px auto;
+            width: 250px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        #trackCover {
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            outline: 1px solid rgba(0, 0, 0, 0.2);
+            outline-offset: -1px;
+        }
+        #trackName {
+            display: block;
+            padding-top: 5px;
+            font-weight: 600;
+        }
+        #trackName, #artistName {
+            white-space: nowrap;
+            display: block;
+            overflow: hidden;
+        }
+        a.developer {
+            color: lightgray;
+            outline: none;
+        }
+        #notLoaded { display: none; }
+        #notLoaded span {
+            display: block;
+            padding: 10px 15px;
+            border: 1px solid lightgrey;
+            text-align: center;
+            margin: 25px;
+            color: grey;
+            cursor: pointer;
+        }
+        #notLoaded span:hover { color: lightgray; }
+    </style>
+    <!-- Права на отдельные компоненты, составляющие дизайн настоящей программы для ЭВМ "Yandex Music Controls", принадлежат ООО «ЯНДЕКС». -->
+</head>
+
+<body>
+    <div id="playerControls">
+        <div class="button" id="prev"></div>
+        <div class="button" id="play"></div>
+        <div class="button" id="next"></div>
+        <div class="current">
+            <img id="trackCover" src="" alt="Album Art">
+            <span id="trackName"></span>
+            <span id="artistName"></span>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <div id="notLoaded">
+        <span class="button" id="open">Я.Музыка не открыта</span>
+    </div>
+    <!--<a href="http://squirrel-research.ru/" target="_blank" class="developer">version 1.0 developer preview</a>-->
+    <script src="controls-backend.js"></script>
+</body>
+
+</html>
