@@ -11,6 +11,10 @@ It works perfectly with the latest Firefox and Chrome browsers.
 
 It is only available in Russian currently :ru:.
 
+## Packaged versions
+* [Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/yandex-music-controls/)
+* Chrome Store - not available due to required $5 payment
+
 ## How to use
 1. Install the plugin.
 2. Go to the [Yandex Music site](https://music.yandex.ru/) and click the Ya.Music control icon. Or just click on the icon and press the button "Yandex Music is not opened".

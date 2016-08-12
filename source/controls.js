@@ -6,7 +6,7 @@ Main script for Yandex Music player control.
 * https://github.com/killbillsbor/ya-music-controls
 * (c) 2016
 * Yandex Music Player Control Plugin
-* v.1.0
+* v.1.0.1
 
 */
 
@@ -14,9 +14,7 @@ Main script for Yandex Music player control.
 var playerContainer, trackCover, trackCoverURL, trackName, playerState;
 
 /* Send message to Background Script to get the Yandex Music Tab ID: */
-chrome.runtime.sendMessage({greeting: "hello"}, function (response) {
-    console.log("RESPONSE: " + response.farewell);
-});
+chrome.runtime.sendMessage({greeting: "hello"});
 
 /* Listen to commands from buttons: */
 chrome.runtime.onMessage.addListener(

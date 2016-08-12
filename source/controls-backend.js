@@ -1,8 +1,6 @@
 /*
 Listen for clicks in the popup.
-
 If the click is not on one of the beasts, return early.
-
 Otherwise, the ID of the node is the action we want.
 
 * Author Vitalii Rizo
@@ -10,7 +8,7 @@ Otherwise, the ID of the node is the action we want.
 * https://github.com/killbillsbor/ya-music-controls
 * (c) 2016
 * Yandex Music Player Control Plugin
-* v.1.0
+* v.1.0.1
 
 */
 

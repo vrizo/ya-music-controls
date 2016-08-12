@@ -6,7 +6,7 @@ Listen for messages from Controls.js. The task is to get Tab ID of Yandex Music.
 * https://github.com/killbillsbor/ya-music-controls
 * (c) 2016
 * Yandex Music Player Control Plugin
-* v.1.0
+* v.1.0.1
 
 */
 
@@ -20,4 +20,3 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
-
