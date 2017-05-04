@@ -16,21 +16,36 @@ It is only available in Russian currently :ru:.
 * Chrome Store - not available due to required $5 payment
 
 ## How to use
-1. Install the plugin.
-2. Go to the [Yandex Music site](https://music.yandex.ru/) and click the Ya.Music control icon. Or just click on the icon and press the button "Yandex Music is not opened".
+1. Install the plugin
+2. Go to the [Yandex Music site](https://music.yandex.ru/) and click the Ya.Music control icon. Or just click on the icon and press the button "Yandex Music is not opened"
 
-*After installation you will need to refresh your Yandex Music page if it was loaded before install.*
+*After installation you will need to refresh your Yandex Music page if it was loaded before install*
 
 ## Features
-* This plugin provides Music control buttons (Play/Pause, Next, Previous buttons) :musical_note:
+* This plugin provides Music control buttons (Play/Pause, Next, Previous, Like/Unlike buttons) :musical_note:
 * and Player information (track and artist name, album art)
 
 ## Todo:
-* Remove account changing when you changed it on a other tab (I don't know how to remove existing focus action from the page).
-* Add :heart: Like button
-* Add :mute: Mute button 
+* Remove account changing when you changed it on a other tab (I don't know how to remove existing focus action from the page)
+* Add :mute: Mute button
+* Auto packager
 
 ## Having any troubles or ideas?
 Please contact [me by email](mailto:kb@kernel-it.ru).
 
 *Права на отдельные компоненты, составляющие дизайн настоящей программы для ЭВМ "Yandex Music Controls", принадлежат ООО «ЯНДЕКС».*
+
+## Changelog:
+
+### 1.2
+* New features: like, dislike buttons, share buttons (don't forget to share with your friends!), multiple tabs support
+* Improved UI
+* It supports not only Russian, but also Ukrainian and Belarusian website versions now!
+* Also, it uses Yandex Music API in a new version for better performance and stability
+* Code improvements
+
+### 1.0.3
+* Small bug fixes
+
+### 1.0
+* Initial release
