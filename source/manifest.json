@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Yandex Music Controls",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Плагин добавляет кнопки на панель инструментов, позволяющие управлять проигрывателем Яндекс Музыки из любой вкладки.",
   "homepage_url": "http://squirrel-research.ru",
   "icons": {
@@ -23,6 +23,38 @@
     "scripts": [
       "background-script.js"
     ]
+  },
+  "commands": {
+    "next": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Right"
+      },
+      "description": "Send a 'next' action"
+    },
+    "prev": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Left"
+      },
+      "description": "Send a 'prev' action"
+    },
+    "play": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space"
+      },
+      "description": "Send a 'play' action (toggles play/pause)"
+    },
+    "volumeUp": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Up"
+      },
+      "description": "Send a 'volumeUp' action"
+    },
+    "volumeDown": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Down"
+      },
+      "description": "Send a 'volumeDown' action"
+    }
   },
   "content_scripts": [
     {

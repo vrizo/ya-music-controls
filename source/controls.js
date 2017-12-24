@@ -3,10 +3,12 @@
  * Author Vitalii Rizo
  * http://squirrel-research.ru
  * https://github.com/killbillsbor/ya-music-controls
- * (c) 2016-2017
+ * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.2
+ * v.1.3
  */
+
+var currentState
 
 (function() {
   "use strict";
@@ -20,9 +22,11 @@
   /* Send request to Yandex Music API: */
   const sendPlayerState = () => {
     // Prepare object with state:
-    const currentState = Object.assign(
+    currentState = Object.assign(
       {},
-      { isPlaying: window.wrappedJSObject.externalAPI.isPlaying(), hostname: window.location.hostname },
+      { isPlaying: window.wrappedJSObject.externalAPI.isPlaying(),
+        hostname: window.location.hostname,
+        volume: window.wrappedJSObject.externalAPI.getVolume() || 0 },
       window.wrappedJSObject.externalAPI.getCurrentTrack()
     );
     // Send a state:
@@ -31,6 +35,7 @@
 
   /* Listen to commands from buttons: */
   chrome.runtime.onMessage.addListener(request => {
+    console.log("ACTION: ", request.action)
     if (request) {
       switch (request.action) {
         case "next":
@@ -49,6 +54,15 @@
         case "disliked":
           window.wrappedJSObject.externalAPI.toggleDislike();
           sendPlayerState(); // toggleDislike can't be detected by observer sometimes
+          break;
+        case "volumeUp":
+          console.log(currentState)
+          window.wrappedJSObject.externalAPI.setVolume(currentState.volume + 0.1 > 1 ? 1 : currentState.volume + 0.1);
+          sendPlayerState();
+          break;
+        case "volumeDown":
+          window.wrappedJSObject.externalAPI.setVolume(currentState.volume - 0.1 < 0 ? 0 : currentState.volume - 0.1);
+          sendPlayerState();
           break;
         case "GET_PLAYER_STATE":
           sendPlayerState();

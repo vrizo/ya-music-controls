@@ -3,9 +3,9 @@
  * Author Vitalii Rizo
  * http://squirrel-research.ru
  * https://github.com/killbillsbor/ya-music-controls
- * (c) 2016-2017
+ * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.2
+ * v.1.3
  */
 
 var bg = chrome.extension.getBackgroundPage();

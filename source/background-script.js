@@ -3,9 +3,9 @@
  * Author Vitalii Rizo
  * http://squirrel-research.ru
  * https://github.com/killbillsbor/ya-music-controls
- * (c) 2016-2017
+ * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.2
+ * v.1.3
  */
 
 var yandexTabID = [];
@@ -17,4 +17,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else if (request.greeting === "bye") {
     yandexTabID = yandexTabID.filter(item => item !== sender.tab.id);
   }
+});
+
+/* Listen to hot keys commands: */
+browser.commands.onCommand.addListener(function(command) {
+  chrome.tabs.sendMessage(yandexTabID[0], { action: command });
 });
