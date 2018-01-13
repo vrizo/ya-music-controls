@@ -35,7 +35,6 @@ var currentState
 
   /* Listen to commands from buttons: */
   chrome.runtime.onMessage.addListener(request => {
-    console.log("ACTION: ", request.action)
     if (request) {
       switch (request.action) {
         case "next":
@@ -56,7 +55,6 @@ var currentState
           sendPlayerState(); // toggleDislike can't be detected by observer sometimes
           break;
         case "volumeUp":
-          console.log(currentState)
           window.wrappedJSObject.externalAPI.setVolume(currentState.volume + 0.1 > 1 ? 1 : currentState.volume + 0.1);
           sendPlayerState();
           break;

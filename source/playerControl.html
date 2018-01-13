@@ -28,7 +28,9 @@
             display: inline-block;
             font-size: 0;
             cursor: pointer;
+            border: none;
             background-size: 50% auto;
+            background-color: transparent;
             background-repeat: no-repeat;
             background-position: center center;
             -webkit-user-select: none;
@@ -41,6 +43,11 @@
         
         #playerControls .button:hover {
             opacity: 1;
+        }
+        #playerControls .button:focus {
+            box-shadow:
+                0 0 0 2px #009aff,
+                0 0 7px 0 #009aff;
         }
         
         #next {
@@ -128,12 +135,12 @@
             font-size: 15px;
             color: black;
             cursor: pointer;
-            background: linear-gradient(#F7F7F7 0%, #E8E8E8 100%);
+            background: linear-gradient(#f7f7f7 0%, #e8e8e8 100%);
         }
         
         #notLoaded .button:hover {
             border-color: #cacac9;
-            background: linear-gradient(#F7F7F7 0%, #eaeaea 100%);
+            background: linear-gradient(#f7f7f7 0%, #eaeaea 100%);
         }
         
         #notLoaded .button:active {
@@ -143,15 +150,31 @@
         #notLoaded .button:active {
             padding: 11px 14px 9px 16px;
         }
+
         /* Messages block */
-        
         #messages,
         .share__info {
             line-height: 20px;
             color: #b0b0af;
         }
+
+        /* Hotkeys block */
+        .hotkeys {
+            padding: 0 10px 0 19px;
+            text-align: left;
+        }
+        .hotkeys__title {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .hotkeys_combination {
+            display: inline-block;
+            background: #e8e8e8;
+            padding: 2px;
+            border-radius: 2px;
+        }
+
         /* Share block */
-        
         .share__info {
             margin: 15px 0 7px;
         }
@@ -193,13 +216,13 @@
 
 <body>
     <div id="playerControls">
-        <div class="button" id="prev"></div>
-        <div class="button" id="play" tabindex="0"></div>
-        <div class="button" id="next"></div>
-        <div class="button" id="liked"></div>
-        <div class="button" id="disliked"></div>
+        <button class="button" id="prev"></button>
+        <button class="button" id="play"></button>
+        <button class="button" id="next"></button>
+        <button class="button" id="liked"></button>
+        <button class="button" id="disliked"></button>
         <div class="current">
-            <a href="#" id="trackLink" target="_blank"><img id="trackCover" src="" alt=""></a>
+            <a href="#" id="trackLink" target="_blank"><img id="trackCover" src="" alt="Track Cover not loaded"></a>
             <div>
                 <span id="trackName"></span>
                 <span id="artistName"></span>
@@ -212,6 +235,13 @@
     </div>
     <div id="messages">
     </div>
+    <details class="hotkeys" id="hotkeys">
+        <summary class="hotkeys__title">Доступны горячие клавиши!</summary>
+        <ul>
+            <li>Переключение треков&nbsp;&mdash; <span class="hotkeys_combination">Ctrl+Shift+&larr;</span> <br/>и&nbsp;<span class="hotkeys_combination">Ctrl+Shift+&rarr;</span></li>
+            <li>Управление громкостью&nbsp;&mdash; <span class="hotkeys_combination">Ctrl+Shift+&uarr;</span> <br/>и&nbsp;<span class="hotkeys_combination">Ctrl+Shift+&darr;</span></li>
+        </ul>
+    </details>
     <div class="share" id="share">
         <p class="share__info">Понравился плагин? Поделись с друзьями:</p>
         <div>

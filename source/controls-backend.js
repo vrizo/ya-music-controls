@@ -25,6 +25,7 @@ document.addEventListener("click", e => {
   } else {
     chrome.tabs.sendMessage(yandexTabID, { action });
   }
+  e.currentTarget.blur()
 });
 
 chrome.runtime.onMessage.addListener(response => {
