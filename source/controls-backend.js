@@ -56,66 +56,60 @@ const checkMusicState = () => {
 
 /* Update data in the popup: */
 const updatePopup = response => {
+  const playerControls = document.getElementById('playerControls')
+  const messagesBlock = document.getElementById('messages')
+  const trackCover = document.getElementById('trackCover')
+  const artistName = document.getElementById('artistName')
+  const shareBlock = document.getElementById('share')
+  const trackName = document.getElementById('trackName')
+  const notLoaded = document.getElementById('notLoaded')
+  const dislike = document.getElementById('disliked')
+  const link = document.getElementById('trackLink')
+  const like = document.getElementById('liked')
+  const play = document.getElementById('play')
+
   if (typeof response !== 'undefined') {
     response = response.state
 
-    document.getElementById('play')
-      .setAttribute('class', 'button ' + (response.isPlaying ? 'pause' : ''))
-    document.getElementById('play')
-      .setAttribute('title', response.isPlaying
-        ? `Пауза [${ ctrl } + Shift + Пробел]`
-        : `Играть [${ ctrl } + Shift + Пробел]`)
+    play.setAttribute('class', 'button ' + (response.isPlaying ? 'pause' : ''))
+    play.setAttribute('title', response.isPlaying
+      ? `Пауза [${ ctrl } + Shift + Пробел]`
+      : `Играть [${ ctrl } + Shift + Пробел]`)
 
     if (typeof response.title !== 'undefined') {
       // Artists list
       let artists = ''
       response.artists.forEach(artist => {
-        artists =
-          artists +
-          '<a href="https://' +
-          response.hostname +
-          artist.link +
-          '" target="_blank">' +
-          artist.title +
-          '</a>, '
+        artists +=
+          `<a href="https://${ response.hostname + artist.link }"
+           target="_blank">${ artist.title }</a>, `
       })
-      artists = artists.slice(0, -2)
 
       // Album art
       const albumArtURL = 'https://' + response.cover.slice(0, -2) + '100x100'
-      document.getElementById('trackCover')
-        .setAttribute('src', albumArtURL)
-      document.getElementById('trackLink')
-        .setAttribute('href', 'https://' + response.hostname + response.link)
-      document.getElementById('trackCover')
-        .setAttribute('alt', 'Album title - ' + response.title)
+
+      trackCover.setAttribute('src', albumArtURL)
+      trackCover.setAttribute('alt', 'Album title — ' + response.title)
+      link.setAttribute('href', 'https://' + response.hostname + response.link)
 
       // Track details
-      document.getElementById('trackName')
-        .textContent = response.title
-      document.getElementById('artistName')
-        .innerHTML = artists
-      document.getElementById('liked')
-        .className = 'button liked-' + response.liked
-      document.getElementById('disliked')
-        .className = 'button disliked-' + response.disliked
+      trackName.textContent = response.title
+      artistName.innerHTML = artists.slice(0, -2)
+      dislike.className = 'button disliked-' + response.disliked
+      like.className = 'button liked-' + response.liked
 
       // Such error, many tabs
-      if (bg.yandexTabID.length > 1) {
-        document.getElementById('messages')
-          .textContent = 'Открыто несколько вкладок с Яндекс.Музыкой. ' +
+      messagesBlock.textContent = bg.yandexTabID.length > 1
+        ? 'Открыто несколько вкладок с Яндекс.Музыкой. ' +
           'Рекомендуется использовать только одну.'
-      } else document.getElementById('messages').textContent = ''
+        : ''
 
       // Sharer block
-      document.getElementById('share')
-        .style.display = shareState.isShown ? 'block' : 'none'
+      shareBlock.style.display = shareState.isShown ? 'block' : 'none'
     } else {
       // If music is not started, but Yandex Music is opened:
-      document.getElementById('trackCover')
-        .setAttribute('alt', '')
-      document.getElementById('trackName')
-        .textContent = 'Выберите плейлист в Яндекс.Музыке'
+      trackCover.setAttribute('alt', 'Выберите плейлист в Яндекс.Музыке')
+      trackName.textContent = 'Выберите плейлист в Яндекс.Музыке'
     }
   } else {
     // If no response, then try another Tab ID if exists:
@@ -126,10 +120,8 @@ const updatePopup = response => {
       return
     }
     // If there is no more Tab ID, then show Not loaded message:
-    document.getElementById('notLoaded')
-      .setAttribute('style', 'display: block;')
-    document.getElementById('playerControls')
-      .setAttribute('style', 'display: none;')
+    notLoaded.setAttribute('style', 'display: block;')
+    playerControls.setAttribute('style', 'display: none;')
   }
 }
 
@@ -137,7 +129,7 @@ window.onload = () => {
   checkMusicState()
 
   /* Update state of the share block: */
-  const gettingShareInfo = browser.storage.local.get('share_block')
+  const gettingShareInfo = browser.storage.local.get('shareBlock')
   gettingShareInfo.then(popupShareBlock)
 }
 
@@ -148,18 +140,18 @@ const popupShareBlock = storage => {
   let isShown
 
   /* Counter: */
-  if (typeof storage.share_block === 'undefined') {
+  if (typeof storage.shareBlock === 'undefined') {
     // First start:
     counter = 0
     isShown = false
   } else {
-    counter = storage.share_block.counter + 1
+    counter = storage.shareBlock.counter + 1
     isShown = (counter > 5 && counter < 30) || (counter > 65 && counter < 100)
   }
 
   /* Prepare new object (keeping an existing values just in case): */
-  shareState = Object.assign({}, storage.share_block, { counter, isShown })
+  shareState = Object.assign({}, storage.shareBlock, { counter, isShown })
 
   /* Set new info about the share block */
-  browser.storage.local.set({ share_block: shareState })
+  browser.storage.local.set({ shareBlock: shareState })
 }
