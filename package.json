@@ -1,0 +1,33 @@
+{
+  "name": "ya-music-controls",
+  "version": "1.2.0",
+  "description": "Ya.Music Controls plugin let you quickly see what’s currently playing, change a song, and play or pause music without changing a tab.",
+  "main": "index.js",
+  "repository": "https://github.com/killbillsbor/ya-music-controls.git",
+  "author": "<kb@kernel-it.ru>",
+  "license": "GNU",
+  "private": false,
+  "dependencies": {
+    "eslint": "^4.16.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-logux/node4",
+    "globals": {
+      "chrome": true,
+      "browser": true
+    },
+    "rules": {
+      "func-style": [2, "expression", { "allowArrowFunctions": true }]
+    }
+  },
+  "devDependencies": {
+    "eslint-config-logux": "^18.0.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
