@@ -1,5 +1,4 @@
 /* Common styling */
-
 html,
 body {
     width: 350px;
@@ -14,8 +13,8 @@ a {
     color: black;
     text-decoration: none;
 }
-/* Controls block */
 
+/* Controls block */
 #playerControls .button {
     width: 50px;
     height: 50px;
@@ -77,8 +76,8 @@ a {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iNiA2IDI4IDI4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDYgNiAyOCAyOCI+PHBhdGggZmlsbD0iI2VkNDU0MyIgaWQ9InN2Z18xIiBkPSJtMjAsMTFjLTQuOTcsMCAtOSw0LjAzIC05LDlzNC4wMyw5IDksOXM5LC00LjAzMDAwMSA5LC05cy00LjAzMDAwMSwtOSAtOSwtOXptMCwyLjljMS4xNTcsMCAyLjIzNiwwLjMzIDMuMTU4MDAxLDAuODlsLTguMzY4MDAxLDguMzdjLTAuNTYsLTAuOTIzIC0wLjg5LC0yIC0wLjg5LC0zLjE1Nzk5OWMwLC0zLjM2NCAyLjczNiwtNi4xIDYuMSwtNi4xbDAsLTAuMDAyMDAxem0wLDEyLjIwMDAwMWMtMS4xNTcsMCAtMi4yMzYsLTAuMzMgLTMuMTU4MDAxLC0wLjg5MDAwMWw4LjM2NzAwMSwtOC4zNjhjMC41NTk5OTksMC45MjMgMC44OTAwMDEsMiAwLjg5MDAwMSwzLjE1ODAwMWMwLDMuMzY0IC0yLjczNiw2LjEgLTYuMSw2LjFsMC4wMDA5OTksMHoiLz48L3N2Zz4=);
     opacity: 1 !important;
 }
-/* Track information block */
 
+/* Track information block */
 .current {
     margin: 10px auto 15px auto;
     width: 250px;
@@ -113,8 +112,8 @@ a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
-/* Not loaded state */
 
+/* Not loaded state */
 #notLoaded,
 .share {
     display: none;
@@ -157,10 +156,6 @@ a {
     padding: 0 10px 0 19px;
     text-align: left;
 }
-.hotkeys__title {
-    padding: 10px;
-    cursor: pointer;
-}
 .hotkeys_combination {
     display: inline-block;
     background: #e8e8e8;
@@ -185,6 +180,11 @@ a {
 
 .share__button:hover {
     opacity: 0.6;
+}
+
+.share__button:active {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
+    background-position: calc(50% + 1px) calc(50% + 1px);
 }
 
 .share__button-fb {

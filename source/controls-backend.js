@@ -148,7 +148,7 @@ const popupShareBlock = storage => {
     isShown = false
   } else {
     counter = storage.share_block.counter + 1
-    isShown = (counter > 10 && counter < 20) || (counter > 60 && counter < 75)
+    isShown = (counter > 5 && counter < 30) || (counter > 65 && counter < 100)
   }
 
   /* Prepare new object (keeping an existing values just in case): */
