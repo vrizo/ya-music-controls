@@ -38,6 +38,7 @@ a {
     opacity: 1;
 }
 #playerControls .button:focus {
+    opacity: 1;
     box-shadow:
         0 0 0 2px #009aff,
         0 0 7px 0 #009aff;
@@ -79,7 +80,7 @@ a {
 
 /* Track information block */
 .current {
-    margin: 10px auto 15px auto;
+    margin: 10px auto 20px auto;
     width: 250px;
     text-align: left;
     line-height: 1.6;
