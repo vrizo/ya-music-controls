@@ -17,6 +17,7 @@
       "browser": true
     },
     "rules": {
+      "multiline-ternary": ["error", "always-multiline"],
       "func-style": [2, "expression", { "allowArrowFunctions": true }]
     }
   },

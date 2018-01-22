@@ -10,6 +10,8 @@
 
 'use strict'
 
+const isMac = navigator.platform.indexOf('Mac') > -1
+const ctrl = isMac ? 'Cmd' : 'Ctrl'
 const bg = chrome.extension.getBackgroundPage()
 let yandexTabID
 let shareState = {}
@@ -59,6 +61,10 @@ const updatePopup = response => {
 
     document.getElementById('play')
       .setAttribute('class', 'button ' + (response.isPlaying ? 'pause' : ''))
+    document.getElementById('play')
+      .setAttribute('title', response.isPlaying
+        ? `Пауза [${ ctrl } + Shift + Пробел]`
+        : `Играть [${ ctrl } + Shift + Пробел]`)
 
     if (typeof response.title !== 'undefined') {
       // Artists list
