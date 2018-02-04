@@ -37,6 +37,7 @@ It is only available in Russian currently :ru:.
 
 * Add :mute: Mute button
 * Auto packager
+* Loading indicator
 
 ## Having any troubles or ideas?
 

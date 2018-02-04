@@ -18,18 +18,18 @@ let shareState = {}
 
 /* Listen to clicks in the popup: */
 document.addEventListener('click', e => {
-  yandexTabID = bg.yandexTabID[0]
-  if (!e.target.classList.contains('button')) {
-    return
-  }
   const action = e.target.id
+
+  if (bg && bg.yandexTabID) yandexTabID = bg.yandexTabID[0]
+  if (!e.target.classList.contains('button')) return
+
   if (action === 'open') {
     chrome.tabs.create({ url: 'https://music.yandex.ru' })
     window.close()
   } else {
     chrome.tabs.sendMessage(yandexTabID, { action })
   }
-  e.currentTarget.blur()
+  e.target.blur()
 })
 
 chrome.runtime.onMessage.addListener(response => {
@@ -38,7 +38,9 @@ chrome.runtime.onMessage.addListener(response => {
 
 /* Get Music state if possible: */
 const checkMusicState = () => {
-  yandexTabID = bg.yandexTabID[0]
+  if (bg && bg.yandexTabID) {
+    yandexTabID = bg.yandexTabID[0]
+  }
 
   if (typeof yandexTabID === 'undefined') {
     updatePopup() // call the update with undefined response
@@ -73,8 +75,8 @@ const updatePopup = response => {
 
     play.setAttribute('class', 'button ' + (response.isPlaying ? 'pause' : ''))
     play.setAttribute('title', response.isPlaying
-      ? `Пауза [${ ctrl } + Shift + Пробел]`
-      : `Играть [${ ctrl } + Shift + Пробел]`)
+      ? `Пауза [${ ctrl } + Shift + O]`
+      : `Играть [${ ctrl } + Shift + O]`)
 
     if (typeof response.title !== 'undefined') {
       // Artists list
@@ -89,7 +91,7 @@ const updatePopup = response => {
       const albumArtURL = 'https://' + response.cover.slice(0, -2) + '100x100'
 
       trackCover.setAttribute('src', albumArtURL)
-      trackCover.setAttribute('alt', 'Album title — ' + response.title)
+      trackCover.setAttribute('alt', 'Обложка альбома — ' + response.title)
       link.setAttribute('href', 'https://' + response.hostname + response.link)
 
       // Track details
@@ -113,7 +115,7 @@ const updatePopup = response => {
     }
   } else {
     // If no response, then try another Tab ID if exists:
-    if (bg.yandexTabID.length > 0) {
+    if (bg.yandexTabID && bg.yandexTabID.length > 0) {
       // Remove the first Tab ID because it's unavailable anymore:
       bg.yandexTabID.shift()
       checkMusicState()
@@ -127,6 +129,19 @@ const updatePopup = response => {
 
 window.onload = () => {
   checkMusicState()
+
+  /* Update hotkeys info: */
+  const ctrls = document.querySelectorAll('.hotkeys_ctrl')
+  const open = document.getElementById('open')
+  const prev = document.getElementById('prev')
+  const next = document.getElementById('next')
+
+  open.setAttribute('title', `Открыть Я.Музыку [${ ctrl } + Shift + O]`)
+  prev.setAttribute('title', `Предыдущий трек [${ ctrl } + Shift + K]`)
+  next.setAttribute('title', `Следующий трек [${ ctrl } + Shift + L]`)
+  ctrls.forEach(elem => {
+    elem.textContent = ctrl
+  })
 
   /* Update state of the share block: */
   const gettingShareInfo = browser.storage.local.get('shareBlock')

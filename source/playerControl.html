@@ -6,13 +6,13 @@
     </head>
     <body>
         <div id="playerControls">
-            <button class="button" id="prev" title="Предыдущий трек [Ctrl + ←]"></button>
-            <button class="button" id="play" title="Пауза"></button>
-            <button class="button" id="next" title="Следующий трек [Ctrl + →]"></button>
+            <button class="button" id="prev"></button>
+            <button class="button" id="play"></button>
+            <button class="button" id="next"></button>
             <button class="button" id="liked" title="Добавить в &laquo;Мою музыку&raquo;"></button>
             <button class="button" id="disliked" title="Не рекомендовать"></button>
             <div class="current">
-                <a href="#" id="trackLink" target="_blank"><img id="trackCover" src="" alt="Track Cover not loaded"></a>
+                <a href="#" id="trackLink" target="_blank"><img id="trackCover" src="" alt="Обложка не загружена"></a>
                 <div>
                     <span id="trackName"></span>
                     <span id="artistName"></span>
@@ -27,8 +27,15 @@
         </div>
         <div class="hotkeys" id="hotkeys">
             <ul>
-                <li>Переключение треков&nbsp;&mdash; <span class="hotkeys_combination">Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&larr;</span> <br/>и&nbsp;<span class="hotkeys_combination">Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&rarr;</span></li>
-                <li>Управление громкостью&nbsp;&mdash; <span class="hotkeys_combination">Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&uarr;</span> <br/>и&nbsp;<span class="hotkeys_combination">Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&darr;</span></li>
+                <li>
+                    Проигрывание или пауза&nbsp;&mdash; <span class="hotkeys_combination"><span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;O</span>
+                </li>
+                <li>
+                    Переключение треков&nbsp;&mdash; <span class="hotkeys_combination"><span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;K</span> <br/>и&nbsp;<span class="hotkeys_combination"><span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;L</span>
+                </li>
+                <li>
+                    Управление громкостью&nbsp;&mdash; <span class="hotkeys_combination"><span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&uarr;</span> <br/>и&nbsp;<span class="hotkeys_combination"><span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&darr;</span>
+                </li>
             </ul>
         </div>
         <div class="share" id="share">

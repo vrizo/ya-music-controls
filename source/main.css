@@ -155,6 +155,7 @@ a {
 /* Hotkeys block */
 .hotkeys {
     padding: 0 10px 0 19px;
+    line-height: 1.5;
     text-align: left;
 }
 .hotkeys_combination {
@@ -162,6 +163,7 @@ a {
     background: #e8e8e8;
     padding: 2px;
     border-radius: 2px;
+    line-height: 1;
 }
 
 /* Share block */

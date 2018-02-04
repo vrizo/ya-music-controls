@@ -27,19 +27,19 @@
   "commands": {
     "next": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Right"
+        "default": "Ctrl+Shift+L"
       },
       "description": "Send a 'next' action"
     },
     "prev": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Left"
+        "default": "Ctrl+Shift+K"
       },
       "description": "Send a 'prev' action"
     },
     "play": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Space"
+        "default": "Ctrl+Shift+O"
       },
       "description": "Send a 'play' action (toggles play/pause)"
     },
@@ -71,13 +71,5 @@
   ],
   "permissions": [
     "storage"
-  ],
-  "externally_connectable": {
-    "matches": [
-      "*://*.music.yandex.ru/*",
-      "*://*.music.yandex.net/*",
-      "*://*.music.yandex.ua/*",
-      "*://*.music.yandex.by/*"
-    ]
-  }
+  ]
 }
