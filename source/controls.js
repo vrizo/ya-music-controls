@@ -13,7 +13,7 @@
 let state
 
 /* Send message to Background Script to get
-    or remove the Yandex Music Tab ID: */
+   or remove the Yandex Music Tab ID: */
 chrome.runtime.sendMessage({ greeting: 'hello' })
 
 window.onbeforeunload = () => {

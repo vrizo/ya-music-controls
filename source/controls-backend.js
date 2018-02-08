@@ -45,7 +45,7 @@ const checkMusicState = () => {
   if (typeof yandexTabID === 'undefined') {
     updatePopup() // call the update with undefined response
   } else {
-    // Check if tab still exists?
+    /* Check if tab still exists? */
     chrome.tabs.get(yandexTabID, tab => {
       if (!tab) {
         updatePopup() // call the update with undefined response
@@ -79,7 +79,7 @@ const updatePopup = response => {
       : `Играть [${ ctrl } + Shift + O]`)
 
     if (typeof response.title !== 'undefined') {
-      // Artists list
+      /* Artists list */
       let artists = ''
       response.artists.forEach(artist => {
         artists +=
@@ -87,41 +87,41 @@ const updatePopup = response => {
            target="_blank">${ artist.title }</a>, `
       })
 
-      // Album art
+      /* Album art */
       const albumArtURL = 'https://' + response.cover.slice(0, -2) + '100x100'
 
       trackCover.setAttribute('src', albumArtURL)
       trackCover.setAttribute('alt', 'Обложка альбома — ' + response.title)
       link.setAttribute('href', 'https://' + response.hostname + response.link)
 
-      // Track details
+      /* Track details */
       trackName.textContent = response.title
       artistName.innerHTML = artists.slice(0, -2)
       dislike.className = 'button disliked-' + response.disliked
       like.className = 'button liked-' + response.liked
 
-      // Such error, many tabs
+      /* Such error, many tabs */
       messagesBlock.textContent = bg.yandexTabID.length > 1
         ? 'Открыто несколько вкладок с Яндекс.Музыкой. ' +
           'Рекомендуется использовать только одну.'
         : ''
 
-      // Sharer block
+      /* Sharer block */
       shareBlock.style.display = shareState.isShown ? 'block' : 'none'
     } else {
-      // If music is not started, but Yandex Music is opened:
+      /* If music is not started, but Yandex Music is opened */
       trackCover.setAttribute('alt', 'Выберите плейлист в Яндекс.Музыке')
       trackName.textContent = 'Выберите плейлист в Яндекс.Музыке'
     }
   } else {
-    // If no response, then try another Tab ID if exists:
+    /* If no response, then try another Tab ID if exists */
     if (bg.yandexTabID && bg.yandexTabID.length > 0) {
-      // Remove the first Tab ID because it's unavailable anymore:
+      /* Remove the first Tab ID because it's unavailable anymore */
       bg.yandexTabID.shift()
       checkMusicState()
       return
     }
-    // If there is no more Tab ID, then show Not loaded message:
+    /* If there is no more Tab ID, then show Not loaded message */
     notLoaded.setAttribute('style', 'display: block;')
     playerControls.setAttribute('style', 'display: none;')
   }
@@ -148,7 +148,7 @@ window.onload = () => {
   gettingShareInfo.then(popupShareBlock)
 }
 
-/* Share block state update functio
+/* Share block state update function
    (counts how much the popup was opened, changes isShown property) */
 const popupShareBlock = storage => {
   let counter
@@ -156,7 +156,7 @@ const popupShareBlock = storage => {
 
   /* Counter: */
   if (typeof storage.shareBlock === 'undefined') {
-    // First start:
+    /* First start */
     counter = 0
     isShown = false
   } else {
