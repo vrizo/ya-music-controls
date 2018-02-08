@@ -3,7 +3,7 @@ html,
 body {
     width: 350px;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0 0;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
@@ -12,6 +12,10 @@ body {
 a {
     color: black;
     text-decoration: none;
+}
+
+button::-moz-focus-inner {
+    border: 0;
 }
 
 /* Controls block */
@@ -37,11 +41,12 @@ a {
 #playerControls .button:hover {
     opacity: 1;
 }
-#playerControls .button:focus {
+#playerControls .button:focus,
+.button:focus {
     opacity: 1;
     box-shadow:
-        0 0 0 2px #009aff,
-        0 0 7px 0 #009aff;
+        0 0 0 2px #00aaff,
+        0 0 7px 0 #00aaff;
 }
 
 #next {
@@ -146,29 +151,73 @@ a {
 }
 
 /* Messages block */
-#messages,
-.share__info {
+#messages {
     line-height: 20px;
     color: #b0b0af;
+    margin-bottom: 20px;
 }
 
 /* Hotkeys block */
 .hotkeys {
-    padding: 0 10px 0 19px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 5px;
+    margin: 0 20px 20px;
+    padding: 10px 10px 10px 0;
     line-height: 1.5;
     text-align: left;
+}
+.hotkeys__close {
+    display: block;
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
+    background: none;
+    float: right;
+    top: -6px;
+    left: 7px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    cursor: pointer;
+}
+.hotkeys__close:hover .close-icon {
+    background-color: #b0b0af;
+}
+.hotkeys__close:active .close-icon {
+    padding: 0 0 1px 1px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
+}
+.close-icon {
+    box-sizing: border-box;
+    margin-left: 3px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    transition: background-color 0.25s ease;
+}
+.hotkeys__list {
+    padding-left: 30px;
 }
 .hotkeys_combination {
     display: inline-block;
     background: #e8e8e8;
-    padding: 2px;
+    padding: 2px 3px;
     border-radius: 2px;
     line-height: 1;
 }
 
 /* Share block */
+.share {
+    margin: 0 0 20px;
+}
 .share__info {
-    margin: 15px 0 7px;
+    margin-bottom: 7px;
+    color: #b0b0af;
 }
 
 .share__button {
