@@ -2,8 +2,6 @@
 
 <img src="/images/logo-hd.png" align="center" height="439" width="450" alt="Music Controls Logo" >
 
-Maintained by [me](https://www.upwork.com/freelancers/~019842b9db9697a094).
-
 Ya.Music Controls plugin let you quickly see what’s currently playing, change the song, and pause or play music without changing a tab.
 The plugin adds one icon in your browser's toolbar. By clicking on this icon a pop up box with Music controls appears.
 
@@ -46,6 +44,14 @@ Please contact [me by email](mailto:kb@kernel-it.ru).
 *Права на отдельные компоненты, составляющие дизайн настоящей программы для ЭВМ "Yandex Music Controls", принадлежат ООО «ЯНДЕКС».*
 
 ## Changelog
+
+### 1.3
+
+* Added Hotkeys! Collapsible list is available in the popup
+* Volume control!
+* Improved accessibility: focus styling for buttons and links
+* ESLint added, LOTS of code refactoring
+
 
 ### 1.2
 
