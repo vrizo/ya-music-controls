@@ -159,15 +159,24 @@ button::-moz-focus-inner {
 
 /* Hotkeys block */
 .hotkeys {
+    position: relative;
     background-color: rgba(0, 0, 0, 0.03);
     border-radius: 5px;
     margin: 0 20px 20px;
-    padding: 10px 10px 10px 0;
+    padding: 8px 8px 8px 0;
     line-height: 1.5;
+    min-height: 18px;
     text-align: left;
+    transition: background-color 0.2s ease;
+}
+.hotkeys-collapsed {
+    background-color: transparent;
 }
 .hotkeys-collapsed .hotkeys__list {
     display: none;
+}
+.hotkeys-collapsed .more-icon::before {
+    transform: rotate(179deg)
 }
 .hotkeys__toggle {
     display: block;
@@ -176,35 +185,45 @@ button::-moz-focus-inner {
     position: relative;
     background: none;
     float: right;
-    top: -6px;
+    top: -4px;
     left: 7px;
     width: 26px;
     height: 26px;
     border: none;
     cursor: pointer;
 }
-.hotkeys__toggle:hover .close-icon {
+.hotkeys__toggle:hover .more-icon {
     background-color: #b0b0af;
 }
-.hotkeys__toggle:active .close-icon {
+.hotkeys__toggle:active .more-icon {
     padding: 0 0 1px 1px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
 }
-.close-icon {
+.more-icon {
     box-sizing: border-box;
-    margin-left: 3px;
-    width: 20px;
-    height: 20px;
-    font-size: 14px;
-    line-height: 17px;
+    margin-left: 1px;
+    width: 22px;
+    height: 22px;
     background-color: #fff;
-    border-radius: 10px;
-    border: none;
-    text-align: center;
-    transition: background-color 0.25s ease;
+    border-radius: 11px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.more-icon::before {
+    content: '';
+    display: block;
+    position: relative;
+    left: calc(50% - 4px);
+    top: calc(50% - 3.5px);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 4px 6.9px 4px;
+    border-color: transparent transparent #000000 transparent;
+    transform-origin: 50% 60%;
 }
 .hotkeys__list {
     padding-left: 30px;
+    margin-bottom: 8px;
 }
 .hotkeys_combination {
     display: inline-block;
@@ -216,6 +235,8 @@ button::-moz-focus-inner {
 
 /* Share block */
 .share {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 5px;
     margin: 0 0 20px;
 }
 .share__info {
