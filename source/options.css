@@ -1,0 +1,91 @@
+/* Options page styles */
+
+.options__button {
+  -moz-appearance: none;
+  color: rgb(12, 12, 13);
+  min-height: 30px;
+  font-size: 15px;   
+  line-height: 27px;
+  padding: 0 10px;
+  border: 1px solid #d7d7db;
+  border-radius: 2px;
+  background-color: rgb(249, 249, 250);
+}
+.options__button:hover {
+  background-color: #eaebea;
+}
+.options__button:active {
+  background-color: #dadada;
+}
+
+.options__section {
+  position: relative;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(12, 12, 13, 0.15);
+  padding-left: 5px;
+}
+
+.options__legend {
+  display: block;
+  font-size: 1.46em;
+  font-weight: 300;
+  line-height: 1.3em;
+  -moz-user-select: none;
+  margin-bottom: 15px;
+}
+
+.options__section-reset {
+  position: absolute;
+  top: 16px;
+  right: 4px;
+}
+
+.option__help {
+  max-width: 650px;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.hotkeys_combination {
+  display: inline-block;
+  background: #ededf0;
+  padding: 2px 3px;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.mac-only {
+  display: none;
+}
+
+.options__list {
+  margin-bottom: 32px;
+}
+.options__list > div {
+  margin: 8px 0;
+}
+
+.options__label {
+  font-size: 15px;
+  margin-right: 10px;
+}
+
+.option__input {
+  -moz-appearance: none;
+  color: rgb(12, 12, 13);
+  height: 27px;
+  line-height: 27px;
+  border: 1px solid #d7d7db;
+  border-radius: 2px;
+  padding: 0 10px;
+}
+.option__input:hover,
+.option__input:focus {
+  border-color: #0A84FF;
+}
+
+.option__input.option__input-error {
+  border-color: #FF0039;
+  box-shadow: 0 0 0 4px #FF7F9B;
+}

@@ -17,10 +17,11 @@
       "browser": true
     },
     "rules": {
-      "multiline-ternary": [
-        "error",
-        "always-multiline"
-      ],
+      "security/detect-non-literal-regexp": "off",
+      "security/detect-unsafe-regex": "off",
+      "node/no-unsupported-features": "off",
+      "multiline-ternary": ["error", "always-multiline"],
+      "valid-jsdoc": "off",
       "func-style": [
         2,
         "expression",
