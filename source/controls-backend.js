@@ -11,10 +11,11 @@
 'use strict'
 
 const state = {
-  isHotkeysShown: false,
+  onMessageBarAction: null,
   isShareShown: false,
   yandexTabID: undefined,
-  popupCount: 0
+  popupCount: 0,
+  barType: null
 }
 const isMac = navigator.platform.indexOf('Mac') > -1
 const ctrl = isMac ? 'Cmd' : 'Ctrl'
@@ -23,15 +24,21 @@ const bg = chrome.extension.getBackgroundPage()
 /* Listen to clicks in the popup: */
 document.addEventListener('click', e => {
   const action = e.target.id
-
   if (bg && bg.yandexTabID) state.yandexTabID = bg.yandexTabID[0]
   if (!e.target.classList.contains('button')) return
 
   if (action === 'open') {
     chrome.tabs.create({ url: 'https://music.yandex.ru' })
     window.close()
-  } else if (action === 'toggleHotkeys') {
-    toggleHotkeys()
+  } else if (action === 'message-bar__action') {
+    if (state.onMessageBarAction) state.onMessageBarAction()
+    state[state.barType + 'BarDismissed'] = true
+    renderMessageBar()
+    saveSettings()
+  } else if (action === 'message-bar__dismiss') {
+    state[state.barType + 'BarDismissed'] = true
+    renderMessageBar()
+    saveSettings()
   } else {
     chrome.tabs.sendMessage(state.yandexTabID, { action })
   }
@@ -70,7 +77,6 @@ const checkMusicState = () => {
 /* Update data in the popup: */
 const updatePopup = response => {
   const playerControls = document.getElementById('playerControls')
-  const messagesBlock = document.getElementById('messages')
   const trackCover = document.getElementById('trackCover')
   const artistName = document.getElementById('artistName')
   const shareBlock = document.getElementById('share')
@@ -84,7 +90,8 @@ const updatePopup = response => {
   if (typeof response !== 'undefined') {
     response = response.state
 
-    play.setAttribute('class', 'button ' + (response.isPlaying ? 'pause' : ''))
+    play.setAttribute('class',
+      'button button-ghost ' + (response.isPlaying ? 'pause' : ''))
     play.setAttribute('title', response.isPlaying
       ? `Пауза [${ ctrl } + Shift + O]`
       : `Играть [${ ctrl } + Shift + O]`)
@@ -108,14 +115,8 @@ const updatePopup = response => {
       /* Track details */
       trackName.textContent = response.title
       artistName.innerHTML = artists.slice(0, -2)
-      dislike.className = 'button disliked-' + response.disliked
-      like.className = 'button liked-' + response.liked
-
-      /* Such error, many tabs */
-      messagesBlock.textContent = bg.yandexTabID.length > 1
-        ? 'Открыто несколько вкладок с Яндекс.Музыкой. ' +
-          'Рекомендуется использовать только одну.'
-        : ''
+      dislike.className = 'button button-ghost enabled-' + response.disliked
+      like.className = 'button button-ghost enabled-' + response.liked
 
       /* Sharer blocks */
       shareBlock.style.display = state.isShareShown ? 'block' : 'none'
@@ -142,13 +143,18 @@ const updatePopup = response => {
 window.onload = () => {
   const gettingSettings = browser.storage.local.get()
   gettingSettings.then(storage => {
-    state.isHotkeysShown = typeof storage.isHotkeysShown === 'undefined'
-      ? true
-      : storage.isHotkeysShown
+    state.hotkeysBarDismissed = storage.hotkeysBarDismissed
+    state.tabsBarDismissed = storage.tabsBarDismissed
     state.isShareShown = storage.isShareShown
     state.yandexTabID = storage.yandexTabID || state.yandexTabID
     state.popupCount = storage.popupCount ? storage.popupCount + 1 : 1
 
+    if (storage.popupCount % 5 === 0) {
+      state.tabsBarDismissed = false
+      state.hotkeysBarDismissed = false
+    }
+
+    renderMessageBar()
     checkMusicState()
     renderHotkeys()
     renderShare()
@@ -157,7 +163,6 @@ window.onload = () => {
   })
 }
 
-/* Share block state update function */
 const renderShare = () => {
   const share = document.getElementById('share')
   const counter = state.popupCount
@@ -169,8 +174,6 @@ const renderShare = () => {
 }
 
 const renderHotkeys = () => {
-  const hotkeys = document.getElementById('hotkeys')
-  const ctrls = document.querySelectorAll('.hotkeys_ctrl')
   const open = document.getElementById('open')
   const prev = document.getElementById('prev')
   const next = document.getElementById('next')
@@ -178,24 +181,76 @@ const renderHotkeys = () => {
   open.setAttribute('title', `Открыть Я.Музыку [${ ctrl } + Shift + O]`)
   prev.setAttribute('title', `Предыдущий трек [${ ctrl } + Shift + K]`)
   next.setAttribute('title', `Следующий трек [${ ctrl } + Shift + L]`)
-  ctrls.forEach(elem => {
-    elem.textContent = ctrl
-  })
+}
 
-  hotkeys.className = state.isHotkeysShown
-    ? 'hotkeys'
-    : 'hotkeys hotkeys-collapsed'
+const renderMessageBar = () => {
+  const messageBar = document.getElementById('message-bar')
+  let content = {}
+
+  if (!state.tabsBarDismissed && bg.yandexTabID.length > 1) {
+    /* Such error, many tabs */
+    content = {
+      text: 'Вы открыли несколько вкладок с Яндекс.Музыкой. Оставьте одну',
+      action: null
+    }
+    state.barType = 'tabs'
+  } else if (!state.hotkeysBarDismissed && state.popupCount > 5) {
+    content = {
+      width: 145,
+      text: 'С горячими клавишами удобнее.',
+      action: 'Настроить'
+    }
+    state.onMessageBarAction = () => browser.runtime.openOptionsPage()
+    state.barType = 'hotkeys'
+  }
+
+  let output = `
+    <div class="message-bar__icon">
+      <object type="image/svg+xml" data="icons/info.svg" tabindex="-1"></object>
+    </div>
+    <div class="message-bar__text"
+         style="width: ${ content.width ? content.width : 'auto' }"
+    >
+      ${ content.text }
+  `
+
+  if (content.action) {
+    output += `
+      <div class="message-bar__action">
+        <button class="button button-micro" id="message-bar__action">
+          ${ content.action }
+        </button>
+      </div>
+    `
+  }
+
+  output += `
+    </div>
+    <div class="message-bar__dismiss">
+      <button class="button button-micro button-ghost"
+              title="Скрыть"
+              id="message-bar__dismiss"
+      >
+        <object data="icons/close.svg"
+                type="image/svg+xml"
+                tabindex="-1"
+        ></object>
+      </button>
+    </div>
+  `
+
+  if (content.text) {
+    messageBar.classList.add('is-shown')
+    messageBar.innerHTML = output
+  } else {
+    messageBar.classList.remove('is-shown')
+  }
 }
 
 const saveSettings = () => {
   const settings = {
-    ...state
+    ...state,
+    onMessageBarAction: null
   }
   browser.storage.local.set(settings)
-}
-
-const toggleHotkeys = () => {
-  state.isHotkeysShown = !state.isHotkeysShown
-  renderHotkeys()
-  saveSettings()
 }

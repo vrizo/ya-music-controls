@@ -1,72 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="main.css">
-    </head>
-    <body>
-        <div id="playerControls">
-            <button class="button" id="prev"></button>
-            <button class="button" id="play"></button>
-            <button class="button" id="next"></button>
-            <button class="button" id="liked" title="Добавить в &laquo;Мою музыку&raquo;"></button>
-            <button class="button" id="disliked" title="Не рекомендовать"></button>
-            <div class="current">
-                <a href="#" id="trackLink" target="_blank"><img id="trackCover" src="" alt="Обложка не загружена"></a>
-                <div>
-                    <span id="trackName"></span>
-                    <span id="artistName"></span>
-                </div>
-                <div style="clear: both;"></div>
-            </div>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="message-bar" class="message-bar"></div>
+      <div id="playerControls">
+        <div class="controls">
+          <button class="button button-ghost" id="prev">
+            <object type="image/svg+xml" data="icons/prev.svg" tabindex="-1"></object>
+          </button>
+          <button class="button button-ghost" id="play">
+            <object type="image/svg+xml" data="icons/play.svg" class="icon-play" tabindex="-1"></object>
+            <object type="image/svg+xml" data="icons/pause.svg" class="icon-pause" tabindex="-1"></object>
+          </button>
+          <button class="button button-ghost" id="next">
+            <object type="image/svg+xml" data="icons/next.svg" tabindex="-1"></object>
+          </button>
+          <button class="button button-ghost enabled-false" id="liked" title="Добавить в &laquo;Мою музыку&raquo;">
+            <object type="image/svg+xml" data="icons/like.svg" class="enabled-false" tabindex="-1"></object>
+            <object type="image/svg+xml" data="icons/like-active.svg" class="enabled-true" tabindex="-1"></object>
+          </button>
+          <button class="button button-ghost enabled-false" id="disliked" title="Не рекомендовать">
+            <object type="image/svg+xml" data="icons/dislike.svg" class="enabled-false" tabindex="-1"></object>
+            <object type="image/svg+xml" data="icons/dislike-active.svg" class="enabled-true" tabindex="-1"></object>
+          </button>
         </div>
-        <div id="notLoaded">
-            <div class="button" id="open">Открыть Я.Музыку</div>
+        <div class="current">
+          <a href="#" id="trackLink" target="_blank"><img id="trackCover" src="" alt="Обложка не загружена"></a>
+          <div>
+            <span id="trackName"></span>
+            <span id="artistName"></span>
+          </div>
+          <div style="clear: both;"></div>
         </div>
-        <div id="messages">
-        </div>
-        <div class="hotkeys" id="hotkeys">
-            <button class="button hotkeys__toggle" id="toggleHotkeys">
-                <div class="more-icon"></div>
-            </button>
-            <ul class="hotkeys__list">
-                <li>
-                    Проигрывание или пауза:<br/>
-                    <span class="hotkeys_combination">
-                        <span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;O
-                    </span>
-                </li>
-                <li>
-                    Переключение треков:<br/>
-                    <span class="hotkeys_combination">
-                        <span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;K
-                    </span>
-                    и&nbsp;
-                    <span class="hotkeys_combination">
-                        <span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;L
-                    </span>
-                </li>
-                <li>
-                    Управление громкостью:<br/>
-                    <span class="hotkeys_combination">
-                        <span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&uarr;
-                    </span>
-                    и&nbsp;
-                    <span class="hotkeys_combination">
-                        <span class="hotkeys_ctrl">Ctrl</span>&nbsp;+&nbsp;Shift&nbsp;+&nbsp;&darr;
-                    </span>
-                </li>
-            </ul>
-        </div>
-        <div class="share" id="share">
-            <p class="share__info">Понравился плагин? Поделись с друзьями:</p>
-            <div>
-                <a class="share__button share__button-vk" target="_blank" title="Поделиться в ВК" href="http://vk.com/share.php?url=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&title=Кнопки%20для%20управления%20Яндекс%20Музыкой&image=http%3A%2F%2Fsquirrel-research.ru%2Fwp-content%2Fuploads%2F2017%2F05%2Ficon-sharer.png"></a>
-                <a class="share__button share__button-fb" target="_blank" title="Поделиться в Facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F"></a>
-                <a class="share__button share__button-tw" target="_blank" title="Поделиться в Twitter" href="https://twitter.com/share?url=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&text=Удобный%20плагин%20для%20управления%20Яндекс%20Музыкой&hashtags=КнопкиМузыки"></a>
-            </div>
-        </div>
-
-        <script src="controls-backend.js"></script>
-    </body>
+      </div>
+      <div id="notLoaded">
+        <button class="button button-primary button-puffy" id="open">Открыть Я.Музыку</button>
+      </div>
+    </div>
+    <div class="share" id="share">
+      <p class="share__info">Понравился плагин? Поделись с друзьями:</p>
+      <div>
+        <a class="share__button share__button-vk" target="_blank" title="Поделиться в ВК" href="http://vk.com/share.php?url=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&title=Кнопки%20для%20управления%20Яндекс%20Музыкой&image=http%3A%2F%2Fsquirrel-research.ru%2Fwp-content%2Fuploads%2F2017%2F05%2Ficon-sharer.png"></a>
+        <a class="share__button share__button-fb" target="_blank" title="Поделиться в Facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F"></a>
+        <a class="share__button share__button-tw" target="_blank" title="Поделиться в Twitter" href="https://twitter.com/share?url=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&text=Удобный%20плагин%20для%20управления%20Яндекс%20Музыкой&hashtags=КнопкиМузыки"></a>
+      </div>
+    </div>
+    <script src="controls-backend.js"></script>
+  </body>
 </html>
