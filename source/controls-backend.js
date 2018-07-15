@@ -99,6 +99,8 @@ const updatePopup = response => {
   const link = document.getElementById('trackLink')
   const like = document.getElementById('liked')
   const play = document.getElementById('play')
+  const next = document.getElementById('next')
+  const prev = document.getElementById('prev')
 
   if (typeof response !== 'undefined') {
     response = response.state
@@ -106,6 +108,12 @@ const updatePopup = response => {
 
     play.setAttribute('class',
       'button button-ghost ' + (state.isPlaying ? 'pause' : ''))
+    response.next
+      ? next.removeAttribute('disabled')
+      : next.setAttribute('disabled', 'disabled')
+    response.prev
+      ? prev.removeAttribute('disabled')
+      : prev.setAttribute('disabled', 'disabled')
 
     if (typeof response.title !== 'undefined') {
       /* Artists list */

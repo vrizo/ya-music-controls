@@ -23,15 +23,14 @@ window.onbeforeunload = () => {
 /* Send request to Yandex Music API: */
 const sendPlayerState = () => {
   const api = window.wrappedJSObject.externalAPI
-  /* Prepare object with state: */
-  state = Object.assign(
-    {},
-    { isPlaying: api.isPlaying(),
-      hostname: window.location.hostname,
-      volume: api.getVolume() || 0 },
-    api.getCurrentTrack()
-  )
-  /* Send a state: */
+  state = {
+    ...api.getCurrentTrack(),
+    ...api.getControls(),
+    isPlaying: api.isPlaying(),
+    hostname: window.location.hostname,
+    volume: api.getVolume() || 0
+  }
+
   chrome.runtime.sendMessage({ state })
 }
 
