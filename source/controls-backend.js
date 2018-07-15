@@ -14,7 +14,7 @@ const state = {
   onMessageBarAction: null,
   isShareShown: false,
   yandexTabID: undefined,
-  popupCount: 0,
+  pluginCount: 0,
   barType: null
 }
 const isMac = navigator.platform.indexOf('Mac') > -1
@@ -147,11 +147,10 @@ window.onload = () => {
     state.tabsBarDismissed = storage.tabsBarDismissed
     state.isShareShown = storage.isShareShown
     state.yandexTabID = storage.yandexTabID || state.yandexTabID
-    state.popupCount = storage.popupCount ? storage.popupCount + 1 : 1
+    state.pluginCount = storage.pluginCount ? storage.pluginCount + 1 : 1
 
-    if (storage.popupCount % 5 === 0) {
+    if (storage.pluginCount % 5 === 0) {
       state.tabsBarDismissed = false
-      state.hotkeysBarDismissed = false
     }
 
     renderMessageBar()
@@ -165,10 +164,11 @@ window.onload = () => {
 
 const renderShare = () => {
   const share = document.getElementById('share')
-  const counter = state.popupCount
+  const counter = state.pluginCount
 
-  state.isShareShown = (counter > 5 && counter < 30) ||
-    (counter > 65 && counter < 100)
+  state.isShareShown = (counter > 10 && counter < 30) ||
+    (counter > 65 && counter < 100) ||
+    (counter > 150 && counter < 170)
 
   share.style.display = state.isShareShown ? 'block' : 'none'
 }
@@ -194,7 +194,7 @@ const renderMessageBar = () => {
       action: null
     }
     state.barType = 'tabs'
-  } else if (!state.hotkeysBarDismissed && state.popupCount > 5) {
+  } else if (!state.hotkeysBarDismissed && state.pluginCount < 10) {
     content = {
       width: 145,
       text: 'С горячими клавишами удобнее.',
