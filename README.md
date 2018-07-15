@@ -31,8 +31,16 @@ It’s only available in Russian currently :ru:.
 1. Run `yarn install` to install all necessary packages
 2. Add `sources/manifest.json` as a temporary plugin in `about:debugging`
 
+Do not forget to remove `__MACOSX` and `.DS_Store` from the archive:
+
+```bash
+$ zip -d yandex_music_controls-*.zip "*/*.DS_Store"
+$ zip -d yandex_music_controls-*.zip "__MACOSX/*"
+```
+
 ## Todo
 
+* Add tracking tag to share buttons (`src parameter that begin with "external-"`)
 * Add :mute: Mute button
 * Auto packager
 
