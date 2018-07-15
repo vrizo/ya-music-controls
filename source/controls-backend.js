@@ -51,12 +51,14 @@ document.addEventListener('click', e => {
     renderMessageBar()
     saveSettings()
   } else {
+    showLoader()
     chrome.tabs.sendMessage(state.yandexTabID, { action })
   }
   e.target.blur()
 })
 
 chrome.runtime.onMessage.addListener(response => {
+  hideLoader()
   updatePopup(response)
 })
 
@@ -173,6 +175,16 @@ window.onload = () => {
 
     saveSettings()
   })
+}
+
+const showLoader = () => {
+  const loader = document.getElementById('loader')
+  loader.style.opacity = 1
+}
+
+const hideLoader = () => {
+  const loader = document.getElementById('loader')
+  loader.style.opacity = 0
 }
 
 const renderShare = () => {

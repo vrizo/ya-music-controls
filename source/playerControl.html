@@ -29,10 +29,15 @@
           </button>
         </div>
         <div class="current">
-          <a href="#" id="trackLink" target="_blank"><img id="trackCover" src="" alt="Обложка не загружена"></a>
+          <a href="#" id="trackLink" class="current__link" target="_blank">
+            <div id="loader" class="current__loader">
+              <div class="current__loader-icon"></div>
+            </div>
+            <img id="trackCover" class="current__cover" src="" alt="Обложка не загружена">
+          </a>
           <div>
-            <span id="trackName"></span>
-            <span id="artistName"></span>
+            <span id="trackName" class="current_name"></span>
+            <span id="artistName" class="current_artist"></span>
           </div>
           <div style="clear: both;"></div>
         </div>

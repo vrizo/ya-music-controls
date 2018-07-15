@@ -44,15 +44,42 @@ button::-moz-focus-inner {
     border: 0;
 }
 
-.button-primary {
+.button.button-primary {
     background-color: #0060df;
     color: #fff;
 }
-.button-primary:hover {
+.button.button-primary:hover {
     background-color: #003eaa;
 }
-.button-primary:active {
+.button.button-primary:active {
     background-color: #002275;
+}
+
+.button.button-ghost {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    background-size: 50% auto;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.button.button-micro.button-ghost {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+}
+.button.button-ghost > svg {
+    fill: rgba(12, 12, 13, 0.8);
+}
+.button.button-ghost:hover {
+    background-color: rgba(12, 12, 13, 0.1);
+}
+.button.button-ghost:active {
+    background-color: rgba(12, 12, 13, 0.2);
 }
 
 .button-puffy {
@@ -117,32 +144,6 @@ button::-moz-focus-inner {
     justify-content: space-between;
     padding: 0 35px 10px;
 }
-.button.button-ghost {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0;
-    background-size: 50% auto;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-.button.button-micro.button-ghost {
-    width: 24px;
-    height: 24px;
-    padding: 0;
-}
-.button.button-ghost > svg {
-    fill: rgba(12, 12, 13, 0.8);
-}
-.button.button-ghost:hover {
-    background-color: rgba(12, 12, 13, 0.1);
-}
-.button.button-ghost:active {
-    background-color: rgba(12, 12, 13, 0.2);
-}
 
 .pause > .icon-pause,
 .enabled-true > .enabled-true,
@@ -157,7 +158,6 @@ button::-moz-focus-inner {
     display: none;
 }
 
-
 /* Track information block */
 .current {
     margin: 10px auto 20px auto;
@@ -168,28 +168,55 @@ button::-moz-focus-inner {
     align-items: center;
 }
 
-#trackCover {
-    float: left;
+.current__link {
+    position: relative;
+    display: block;
     width: 100px;
     height: 100px;
     margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.current__loader {
+    opacity: 0;
+    position: absolute;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
+    width: 32px;
+    height: 32px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: opacity 0.1s ease-in;
+}
+.current__loader-icon {
+    width: 100%;
+    height: 100%;
+    animation: spin 2s linear infinite;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+PHBhdGggZD0iTTI1IDM4Yy03LjIgMC0xMy01LjgtMTMtMTMgMC0zLjIgMS4yLTYuMiAzLjMtOC42bDEuNSAxLjNDMTUgMTkuNyAxNCAyMi4zIDE0IDI1YzAgNi4xIDQuOSAxMSAxMSAxMSAxLjYgMCAzLjEtLjMgNC42LTFsLjggMS44Yy0xLjcuOC0zLjUgMS4yLTUuNCAxLjJ6Ii8+PHBhdGggZD0iTTM0LjcgMzMuN2wtMS41LTEuM2MxLjgtMiAyLjgtNC42IDIuOC03LjMgMC02LjEtNC45LTExLTExLTExLTEuNiAwLTMuMS4zLTQuNiAxbC0uOC0xLjhjMS43LS44IDMuNS0xLjIgNS40LTEuMiA3LjIgMCAxMyA1LjggMTMgMTMgMCAzLjEtMS4yIDYuMi0zLjMgOC42eiIvPjxwYXRoIGQ9Ik0xOCAyNGgtMnYtNmgtNnYtMmg4eiIvPjxwYXRoIGQ9Ik00MCAzNGgtOHYtOGgydjZoNnoiLz48L3N2Zz4=);
+}
+
+@keyframes spin { 100% { transform:rotate(360deg); } }
+
+.current__cover {
+    width: 100%;
+    height: 100%;
     outline: 1px solid rgba(0, 0, 0, 0.2);
     outline-offset: -1px;
 }
 
-#trackName {
+.current_name {
     display: block;
     font-weight: 600;
 }
 
-#trackName,
-#artistName {
+.current_name,
+.current_artist {
     text-overflow: ellipsis;
     display: block;
     overflow: hidden;
 }
 
-#artistName a {
+.current_artist a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
