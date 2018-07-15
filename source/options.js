@@ -14,6 +14,7 @@ const isMac = navigator.platform.indexOf('Mac') > -1
 const ctrl = isMac ? 'Cmd' : 'Ctrl'
 
 const format = combination => {
+  if (!combination) return null
   let output = combination.replace(/\+/g, ' + ')
   if (isMac) output = output.replace('MacCtrl', 'Control')
   output = output.replace('Ctrl', ctrl)

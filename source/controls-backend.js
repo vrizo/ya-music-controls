@@ -15,11 +15,22 @@ const state = {
   isShareShown: false,
   yandexTabID: undefined,
   pluginCount: 0,
+  isPlaying: false,
   barType: null
 }
 const isMac = navigator.platform.indexOf('Mac') > -1
 const ctrl = isMac ? 'Cmd' : 'Ctrl'
 const bg = chrome.extension.getBackgroundPage()
+
+const format = combination => {
+  if (!combination) return null
+  let output = combination.replace(/\+/g, ' + ')
+  if (isMac) output = output.replace('MacCtrl', 'Control')
+  output = output.replace('Ctrl', ctrl)
+  if (isMac) output = output.replace('Control', 'Ctrl')
+
+  return output
+}
 
 /* Listen to clicks in the popup: */
 document.addEventListener('click', e => {
@@ -89,12 +100,10 @@ const updatePopup = response => {
 
   if (typeof response !== 'undefined') {
     response = response.state
+    state.isPlaying = response.isPlaying
 
     play.setAttribute('class',
-      'button button-ghost ' + (response.isPlaying ? 'pause' : ''))
-    play.setAttribute('title', response.isPlaying
-      ? `Пауза [${ ctrl } + Shift + O]`
-      : `Играть [${ ctrl } + Shift + O]`)
+      'button button-ghost ' + (state.isPlaying ? 'pause' : ''))
 
     if (typeof response.title !== 'undefined') {
       /* Artists list */
@@ -138,6 +147,8 @@ const updatePopup = response => {
     notLoaded.setAttribute('style', 'display: block;')
     playerControls.setAttribute('style', 'display: none;')
   }
+
+  renderHotkeys()
 }
 
 window.onload = () => {
@@ -152,10 +163,12 @@ window.onload = () => {
     if (storage.pluginCount % 5 === 0) {
       state.tabsBarDismissed = false
     }
+    if (storage.pluginCount % 250 === 0) {
+      state.hotkeysBarDismissed = false
+    }
 
     renderMessageBar()
     checkMusicState()
-    renderHotkeys()
     renderShare()
 
     saveSettings()
@@ -166,21 +179,30 @@ const renderShare = () => {
   const share = document.getElementById('share')
   const counter = state.pluginCount
 
-  state.isShareShown = (counter > 10 && counter < 30) ||
-    (counter > 65 && counter < 100) ||
-    (counter > 150 && counter < 170)
+  state.isShareShown = (counter > 15 && counter < 25) ||
+    (counter > 85 && counter < 90) ||
+    (counter > 165 && counter < 170)
 
   share.style.display = state.isShareShown ? 'block' : 'none'
 }
 
 const renderHotkeys = () => {
+  const play = document.getElementById('play')
   const open = document.getElementById('open')
   const prev = document.getElementById('prev')
   const next = document.getElementById('next')
 
-  open.setAttribute('title', `Открыть Я.Музыку [${ ctrl } + Shift + O]`)
-  prev.setAttribute('title', `Предыдущий трек [${ ctrl } + Shift + K]`)
-  next.setAttribute('title', `Следующий трек [${ ctrl } + Shift + L]`)
+  browser.commands.getAll().then(list => {
+    const commands = {}
+    list.forEach(i => (commands[i.name] = i.shortcut))
+
+    play.setAttribute('title', state.isPlaying
+      ? `Пауза [${ format(commands.play) }]`
+      : `Играть [${ format(commands.play) }]`)
+    open.setAttribute('title', `Открыть Я.Музыку [${ format(commands.play) }]`)
+    prev.setAttribute('title', `Предыдущий трек [${ format(commands.prev) }]`)
+    next.setAttribute('title', `Следующий трек [${ format(commands.next) }]`)
+  })
 }
 
 const renderMessageBar = () => {
@@ -194,7 +216,7 @@ const renderMessageBar = () => {
       action: null
     }
     state.barType = 'tabs'
-  } else if (!state.hotkeysBarDismissed && state.pluginCount < 10) {
+  } else if (!state.hotkeysBarDismissed) {
     content = {
       width: 145,
       text: 'С горячими клавишами удобнее.',
