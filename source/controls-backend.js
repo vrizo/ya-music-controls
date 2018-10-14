@@ -10,9 +10,6 @@
 
 'use strict'
 
-const isMac = navigator.platform.indexOf('Mac') > -1
-const ctrl = isMac ? 'Cmd' : 'Ctrl'
-
 let state = {
   onMessageBarAction: null,
   isShareShown: false,
@@ -21,6 +18,8 @@ let state = {
   isPlaying: false,
   barType: null
 }
+let isMac = navigator.platform.indexOf('Mac') > -1
+let ctrl = isMac ? 'Cmd' : 'Ctrl'
 let bg = chrome.extension.getBackgroundPage()
 
 let format = combination => {

@@ -10,8 +10,8 @@
 
 'use strict'
 
-const isMac = navigator.platform.indexOf('Mac') > -1
-const ctrl = isMac ? 'Cmd' : 'Ctrl'
+let isMac = navigator.platform.indexOf('Mac') > -1
+let ctrl = isMac ? 'Cmd' : 'Ctrl'
 
 let localizeUI = () => {
   for (let node of document.querySelectorAll('[data-i18n]')) {
