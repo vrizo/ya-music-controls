@@ -10,6 +10,9 @@
   "dependencies": {
     "eslint": "^5.7.0"
   },
+  "engines": {
+    "node": ">=7.6.0"
+  },
   "eslintConfig": {
     "extends": "eslint-config-logux/node",
     "globals": {
