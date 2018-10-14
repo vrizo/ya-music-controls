@@ -5,10 +5,10 @@
   "main": "index.js",
   "repository": "https://github.com/killbillsbor/ya-music-controls.git",
   "author": "<kb@kernel-it.ru>",
-  "license": "GNU",
+  "license": "GPL-3.0-only",
   "private": false,
   "dependencies": {
-    "eslint": "^4.16.0"
+    "eslint": "^5.7.0"
   },
   "eslintConfig": {
     "extends": "eslint-config-logux/node4",
@@ -20,7 +20,10 @@
       "security/detect-non-literal-regexp": "off",
       "security/detect-unsafe-regex": "off",
       "node/no-unsupported-features": "off",
-      "multiline-ternary": ["error", "always-multiline"],
+      "multiline-ternary": [
+        "error",
+        "always-multiline"
+      ],
       "valid-jsdoc": "off",
       "func-style": [
         2,
@@ -32,13 +35,13 @@
     }
   },
   "devDependencies": {
-    "eslint-config-logux": "^18.0.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-logux": "^25.0.2",
+    "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.7.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^4.0.0"
   }
 }
