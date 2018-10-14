@@ -7,7 +7,7 @@ The plugin adds one icon in your browser’s toolbar. By clicking on this icon a
 
 It works perfectly with the latest Firefox browser.
 
-It’s only available in Russian currently :ru:.
+It’s available in English :gb: and Russian :ru:.
 
 ## Packaged versions
 
@@ -51,6 +51,9 @@ Please contact [me by email](mailto:kb@kernel-it.ru).
 *Права на отдельные компоненты, составляющие дизайн настоящей программы для ЭВМ "Yandex Music Controls", принадлежат ООО «ЯНДЕКС».*
 
 ## Changelog
+
+### 1.5
+* Add localization — now it supports English language
 
 ### 1.4
 

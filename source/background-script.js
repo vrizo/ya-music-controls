@@ -6,12 +6,12 @@
  * https://github.com/killbillsbor/ya-music-controls
  * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.4
+ * v.1.5
  */
 
 'use strict'
 
-var yandexTabID = [] // eslint-disable-line no-var
+var yandexTabID = [] // eslint-disable-line
 
 chrome.runtime.onMessage.addListener((request, sender) => {
   if (request.greeting === 'hello') {

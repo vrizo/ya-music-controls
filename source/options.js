@@ -5,7 +5,7 @@
  * https://github.com/killbillsbor/ya-music-controls
  * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.4
+ * v.1.5
  */
 
 'use strict'
@@ -13,7 +13,20 @@
 const isMac = navigator.platform.indexOf('Mac') > -1
 const ctrl = isMac ? 'Cmd' : 'Ctrl'
 
-const format = combination => {
+let localizeUI = () => {
+  for (let node of document.querySelectorAll('[data-i18n]')) {
+    let [text, attr] = node.dataset.i18n.split(':')
+    text = browser.i18n.getMessage(text)
+
+    if (attr) {
+      node[attr] = text
+    } else {
+      node.appendChild(document.createTextNode(text))
+    }
+  }
+}
+
+let format = combination => {
   if (!combination) return null
   let output = combination.replace(/\+/g, ' + ')
   if (isMac) output = output.replace('MacCtrl', 'Control')
@@ -23,18 +36,18 @@ const format = combination => {
   return output
 }
 
-const deformat = combination => {
+let deformat = combination => {
   let output = combination.replace(/ +\+ +/g, '+')
   if (isMac) output = output.replace('Ctrl', 'MacCtrl')
   return output.replace(ctrl, 'Ctrl')
 }
 
-const validate = evt => {
-  const combination = deformat(evt.target.value)
-  const rule1 = new RegExp('^\\s*(Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
+let validate = evt => {
+  let combination = deformat(evt.target.value)
+  let rule1 = new RegExp('^\\s*(Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
     '\\s*(Shift\\s*\\+\\s*)?([A-Z0-9]|Comma|Period|Home|End|PageUp|' +
     'PageDown|Space|Insert|Delete|Up|Down|Left|Right)\\s*$')
-  const rule2 = new RegExp('^\\s*((Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
+  let rule2 = new RegExp('^\\s*((Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
     '\\s*)?(Shift\\s*\\+\\s*)?(F[1-9]|F1[0-2])\\s*$')
 
   if (rule1.test(combination) || rule2.test(combination)) {
@@ -44,31 +57,32 @@ const validate = evt => {
   }
 }
 
-const init = () => {
+let init = () => {
   if (isMac) {
-    const cmds = document.querySelectorAll('.mac-only')
+    let cmds = document.querySelectorAll('.mac-only')
     cmds.forEach(elem => {
       elem.style = 'display: inline;'
     })
   }
 
   updateUI()
+  localizeUI()
 }
 
-const updateUI = async function () {
-  const commands = await browser.commands.getAll()
+let updateUI = async function () {
+  let commands = await browser.commands.getAll()
   commands.forEach(command => {
-    const input = document.getElementById(command.name)
+    let input = document.getElementById(command.name)
     input.value = format(command.shortcut)
     input.placeholder = format(input.placeholder)
     input.addEventListener('keyup', evt => validate(evt))
   })
 }
 
-const updateShortcut = async function () {
-  const commands = await browser.commands.getAll()
+let updateShortcut = async function () {
+  let commands = await browser.commands.getAll()
   commands.forEach(command => {
-    const input = document.getElementById(command.name)
+    let input = document.getElementById(command.name)
     browser.commands.update({
       name: command.name,
       shortcut: deformat(input.value)
@@ -76,9 +90,9 @@ const updateShortcut = async function () {
   })
 }
 
-const resetShortcut = async function () {
+let resetShortcut = async function () {
   if (confirm('Сбросить настройки горячих клавиш?')) {
-    const commands = await browser.commands.getAll()
+    let commands = await browser.commands.getAll()
     commands.forEach(command => {
       browser.commands.reset(command.name)
     })

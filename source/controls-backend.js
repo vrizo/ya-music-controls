@@ -5,12 +5,15 @@
  * https://github.com/killbillsbor/ya-music-controls
  * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.4
+ * v.1.5
  */
 
 'use strict'
 
-const state = {
+const isMac = navigator.platform.indexOf('Mac') > -1
+const ctrl = isMac ? 'Cmd' : 'Ctrl'
+
+let state = {
   onMessageBarAction: null,
   isShareShown: false,
   yandexTabID: undefined,
@@ -18,11 +21,9 @@ const state = {
   isPlaying: false,
   barType: null
 }
-const isMac = navigator.platform.indexOf('Mac') > -1
-const ctrl = isMac ? 'Cmd' : 'Ctrl'
-const bg = chrome.extension.getBackgroundPage()
+let bg = chrome.extension.getBackgroundPage()
 
-const format = combination => {
+let format = combination => {
   if (!combination) return null
   let output = combination.replace(/\+/g, ' + ')
   if (isMac) output = output.replace('MacCtrl', 'Control')
@@ -34,7 +35,7 @@ const format = combination => {
 
 /* Listen to clicks in the popup: */
 document.addEventListener('click', e => {
-  const action = e.target.id
+  let action = e.target.id
   if (bg && bg.yandexTabID) state.yandexTabID = bg.yandexTabID[0]
   if (!e.target.classList.contains('button')) return
 
@@ -63,7 +64,7 @@ chrome.runtime.onMessage.addListener(response => {
 })
 
 /* Get Music state if possible: */
-const checkMusicState = () => {
+let checkMusicState = () => {
   if (bg && bg.yandexTabID && bg.yandexTabID.length > 0) {
     state.yandexTabID = bg.yandexTabID[0]
   } else if (bg && bg.yandexTabID.length === 0 && state.yandexTabID) {
@@ -88,19 +89,19 @@ const checkMusicState = () => {
 }
 
 /* Update data in the popup: */
-const updatePopup = response => {
-  const playerControls = document.getElementById('playerControls')
-  const trackCover = document.getElementById('trackCover')
-  const artistName = document.getElementById('artistName')
-  const shareBlock = document.getElementById('share')
-  const trackName = document.getElementById('trackName')
-  const notLoaded = document.getElementById('notLoaded')
-  const dislike = document.getElementById('disliked')
-  const link = document.getElementById('trackLink')
-  const like = document.getElementById('liked')
-  const play = document.getElementById('play')
-  const next = document.getElementById('next')
-  const prev = document.getElementById('prev')
+let updatePopup = response => {
+  let playerControls = document.getElementById('playerControls')
+  let trackCover = document.getElementById('trackCover')
+  let artistName = document.getElementById('artistName')
+  let shareBlock = document.getElementById('share')
+  let trackName = document.getElementById('trackName')
+  let notLoaded = document.getElementById('notLoaded')
+  let dislike = document.getElementById('disliked')
+  let link = document.getElementById('trackLink')
+  let like = document.getElementById('liked')
+  let play = document.getElementById('play')
+  let next = document.getElementById('next')
+  let prev = document.getElementById('prev')
 
   if (typeof response !== 'undefined') {
     response = response.state
@@ -125,7 +126,7 @@ const updatePopup = response => {
       })
 
       /* Album art */
-      const albumArtURL = 'https://' + response.cover.slice(0, -2) + '100x100'
+      let albumArtURL = 'https://' + response.cover.slice(0, -2) + '100x100'
 
       trackCover.setAttribute('src', albumArtURL)
       trackCover.setAttribute('alt', 'Обложка альбома — ' + response.title)
@@ -162,7 +163,7 @@ const updatePopup = response => {
 }
 
 window.onload = () => {
-  const gettingSettings = browser.storage.local.get()
+  let gettingSettings = browser.storage.local.get()
   gettingSettings.then(storage => {
     state.hotkeysBarDismissed = storage.hotkeysBarDismissed
     state.tabsBarDismissed = storage.tabsBarDismissed
@@ -185,19 +186,19 @@ window.onload = () => {
   })
 }
 
-const showLoader = () => {
-  const loader = document.getElementById('loader')
+let showLoader = () => {
+  let loader = document.getElementById('loader')
   loader.style.opacity = 1
 }
 
-const hideLoader = () => {
-  const loader = document.getElementById('loader')
+let hideLoader = () => {
+  let loader = document.getElementById('loader')
   loader.style.opacity = 0
 }
 
-const renderShare = () => {
-  const share = document.getElementById('share')
-  const counter = state.pluginCount
+let renderShare = () => {
+  let share = document.getElementById('share')
+  let counter = state.pluginCount
 
   state.isShareShown = (counter > 15 && counter < 25) ||
     (counter > 85 && counter < 90) ||
@@ -206,14 +207,14 @@ const renderShare = () => {
   share.style.display = state.isShareShown ? 'block' : 'none'
 }
 
-const renderHotkeys = () => {
-  const play = document.getElementById('play')
-  const open = document.getElementById('open')
-  const prev = document.getElementById('prev')
-  const next = document.getElementById('next')
+let renderHotkeys = () => {
+  let play = document.getElementById('play')
+  let open = document.getElementById('open')
+  let prev = document.getElementById('prev')
+  let next = document.getElementById('next')
 
   browser.commands.getAll().then(list => {
-    const commands = {}
+    let commands = {}
     list.forEach(i => (commands[i.name] = i.shortcut))
 
     play.setAttribute('title', state.isPlaying
@@ -225,8 +226,8 @@ const renderHotkeys = () => {
   })
 }
 
-const renderMessageBar = () => {
-  const messageBar = document.getElementById('message-bar')
+let renderMessageBar = () => {
+  let messageBar = document.getElementById('message-bar')
   let content = {}
 
   if (!state.tabsBarDismissed && bg.yandexTabID.length > 1) {
@@ -289,8 +290,8 @@ const renderMessageBar = () => {
   }
 }
 
-const saveSettings = () => {
-  const settings = {
+let saveSettings = () => {
+  let settings = {
     ...state,
     onMessageBarAction: null
   }

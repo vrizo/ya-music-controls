@@ -5,7 +5,7 @@
  * https://github.com/killbillsbor/ya-music-controls
  * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.4
+ * v.1.5
  */
 
 'use strict'
@@ -21,8 +21,8 @@ window.onbeforeunload = () => {
 }
 
 /* Send request to Yandex Music API: */
-const sendPlayerState = () => {
-  const api = window.wrappedJSObject.externalAPI
+let sendPlayerState = () => {
+  let api = window.wrappedJSObject.externalAPI
   state = {
     ...api.getCurrentTrack(),
     ...api.getControls(),
@@ -37,7 +37,7 @@ const sendPlayerState = () => {
 /* Listen to commands from buttons: */
 chrome.runtime.onMessage.addListener(request => {
   if (request) {
-    const api = window.wrappedJSObject.externalAPI
+    let api = window.wrappedJSObject.externalAPI
     switch (request.action) {
       case 'next':
         api.next()
@@ -73,21 +73,21 @@ chrome.runtime.onMessage.addListener(request => {
   }
 })
 
-const initializeMusicControls = () => {
+let initializeMusicControls = () => {
   window.MutationObserver = window.MutationObserver ||
   window.WebKitMutationObserver ||
   window.MozMutationObserver
   /* Find the body element */
-  const target = document.querySelector('body')
+  let target = document.querySelector('body')
   /* Create an observer instance */
-  const observer = new MutationObserver(mutation => {
+  let observer = new MutationObserver(mutation => {
     /* If changes caused by track then: */
     if (mutation[0].attributeName === 'data-unity-state') {
       sendPlayerState()
     }
   })
   /* Configuration of the observer: */
-  const config = {
+  let config = {
     attributes: true
   }
   observer.observe(target, config)
@@ -97,8 +97,8 @@ const initializeMusicControls = () => {
 if (window.attachEvent) {
   window.attachEvent('onload', initializeMusicControls)
 } else if (window.onload) {
-  const curronload = window.onload
-  const newonload = function (evt) {
+  let curronload = window.onload
+  let newonload = function (evt) {
     curronload(evt)
     initializeMusicControls(evt)
   }
