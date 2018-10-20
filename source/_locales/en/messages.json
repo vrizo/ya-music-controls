@@ -1,0 +1,141 @@
+{
+  "extensionName": {
+    "message": "Yandex Music Controls",
+    "description": "Name of the extension"
+  },
+
+  "extensionDescription": {
+    "message": "The plugin adds buttons to the toolbar to control Yandex.Music from any tab",
+    "description": "Description of the extension"
+  },
+
+  "actionTitle": {
+    "message": "Y.Music \u2014 controls",
+    "description": "Title of the icon button"
+  },
+
+  "optionsLegend": {
+    "message": "Hotkeys",
+    "description": "Options page title"
+  },
+
+  "optionsReset": {
+    "message": "Restore defaults",
+    "description": "Reset Options button"
+  },
+
+  "optionsResetConfirm": {
+    "message": "Are you sure you want to reset hotkeys config?",
+    "description": "Reset Options confirmation"
+  },
+
+  "optionsYouCanSet": {
+    "message": "You can assign your combination for each action.",
+    "description": "Options page description"
+  },
+
+  "optionsSupportedKeysTitle": {
+    "message": "Supported keys",
+    "description": "Supported keys title"
+  },
+
+  "optionsKeyComma": {
+    "message": "",
+    "description": "Comma key"
+  },
+
+  "optionsKeyPeriod": {
+    "message": "",
+    "description": "Period key"
+  },
+
+  "optionsKeySpace": {
+    "message": "",
+    "description": "Space key"
+  },
+
+  "optionsKeyArrows": {
+    "message": "arrow keys",
+    "description": "Arrow keys"
+  },
+
+  "optionsRulesRequired": {
+    "message": "Combinations must include",
+    "description": "Rules: required keys"
+  },
+
+  "optionsRulesOr": {
+    "message": "or",
+    "description": "Or"
+  },
+
+  "optionsRulesSimultaneously": {
+    "message": "Simultaneously",
+    "description": "Simultaneously"
+  },
+
+  "optionsRulesAnd": {
+    "message": ", and",
+    "description": "And"
+  },
+
+  "optionsRulesCannot": {
+    "message": "can’t be used",
+    "description": "Can not"
+  },
+
+  "optionsRulesAllowed": {
+    "message": "You can use",
+    "description": "You can use …"
+  },
+
+  "optionsRulesInAdditionTo": {
+    "message": "in addition to",
+    "description": "… in addition to …"
+  },
+
+  "optionsRulesAlsoAllowed": {
+    "message": "However, you can use",
+    "description": "Also allowed …"
+  },
+
+  "optionsRulesWithout": {
+    "message": "without",
+    "description": "… without …"
+  },
+
+  "optionsRulesMultimedia": {
+    "message": "Firefox doesn’t support multimedia keys yet.",
+    "description": "Multimedia keys are not supported"
+  },
+
+  "optionsListPlay": {
+    "message": "Play or pause:",
+    "description": "Play or pause"
+  },
+
+  "optionsListNext": {
+    "message": "Next track:",
+    "description": "Next track"
+  },
+
+  "optionsListPrev": {
+    "message": "Previous track:",
+    "description": "Prev track"
+  },
+
+  "optionsListVolumeUp": {
+    "message": "Volume up:",
+    "description": "Volume up"
+  },
+
+  "optionsListVolumeDown": {
+    "message": "Volume down:",
+    "description": "Volume down"
+  },
+
+  "optionsSave": {
+    "message": "Save hotkeys",
+    "description": "Save settings"
+  }
+}

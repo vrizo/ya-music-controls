@@ -1,0 +1,141 @@
+{
+  "extensionName": {
+    "message": "Yandex Music Controls",
+    "description": "Name of the extension"
+  },
+
+  "extensionDescription": {
+    "message": "Плагин добавляет кнопки на панель инструментов, позволяющие управлять Яндекс Музыкой из любой вкладки",
+    "description": "Description of the extension"
+  },
+
+  "actionTitle": {
+    "message": "Я.Музыка \u2014 управление",
+    "description": "Title of the icon button"
+  },
+
+  "optionsPage": {
+    "message": "Горячие клавиши",
+    "description": "Options page title"
+  },
+
+  "optionsReset": {
+    "message": "Восстановить по умолчанию",
+    "description": "Reset Options button"
+  },
+
+  "optionsResetConfirm": {
+    "message": "Сбросить настройки горячих клавиш?",
+    "description": "Reset Options confirmation"
+  },
+
+  "optionsYouCanSet": {
+    "message": "Вы можете назначить свою комбинацию на каждое действие.",
+    "description": "Options page description"
+  },
+
+  "optionsSupportedKeysTitle": {
+    "message": "Поддерживаемые клавиши",
+    "description": "Supported keys title"
+  },
+
+  "optionsKeyComma": {
+    "message": " (запятая)",
+    "description": "Comma key"
+  },
+
+  "optionsKeyPeriod": {
+    "message": " (точка)",
+    "description": "Period key"
+  },
+
+  "optionsKeySpace": {
+    "message": " (пробел)",
+    "description": "Space key"
+  },
+
+  "optionsKeyArrows": {
+    "message": "стрелочки",
+    "description": "Arrow keys"
+  },
+
+  "optionsRulesRequired": {
+    "message": "Комбинации обязательно должны включать",
+    "description": "Rules: required keys"
+  },
+
+  "optionsRulesOr": {
+    "message": "или",
+    "description": "Or"
+  },
+
+  "optionsRulesSimultaneously": {
+    "message": "Одновременно",
+    "description": "Simultaneously"
+  },
+
+  "optionsRulesAnd": {
+    "message": " и",
+    "description": "And"
+  },
+
+  "optionsRulesCannot": {
+    "message": "нельзя",
+    "description": "Can not"
+  },
+
+  "optionsRulesAllowed": {
+    "message": "Можно использовать",
+    "description": "You can use …"
+  },
+
+  "optionsRulesInAdditionTo": {
+    "message": "в дополнение к",
+    "description": "… in addition to …"
+  },
+
+  "optionsRulesAlsoAllowed": {
+    "message": "Хотя можно использовать клавиши",
+    "description": "Also allowed …"
+  },
+
+  "optionsRulesWithout": {
+    "message": "и без",
+    "description": "… without …"
+  },
+
+  "optionsRulesMultimedia": {
+    "message": "Firefox пока что не поддерживает мультимедийные клавиши.",
+    "description": "Multimedia keys are not supported"
+  },
+
+  "optionsListPlay": {
+    "message": "Проигрывание или пауза:",
+    "description": "Play or pause"
+  },
+
+  "optionsListNext": {
+    "message": "Следующий трек:",
+    "description": "Next track"
+  },
+
+  "optionsListPrev": {
+    "message": "Предыдущий трек:",
+    "description": "Prev track"
+  },
+
+  "optionsListVolumeUp": {
+    "message": "Громче:",
+    "description": "Volume up"
+  },
+
+  "optionsListVolumeDown": {
+    "message": "Тише:",
+    "description": "Volume down"
+  },
+
+  "optionsSave": {
+    "message": "Сохранить горячие клавиши",
+    "description": "Save settings"
+  }
+}

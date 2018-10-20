@@ -9,88 +9,101 @@
 <body>
   <form class="options">
     <div class="options__section">
-      <legend class="options__legend">Горячие клавиши</legend>
-      <button class="options__button options__section-reset" id="reset">
-        Восстановить по умолчанию
-      </button>
+      <legend class="options__legend" data-i18n="optionsLegend"></legend>
+      <button class="options__button options__section-reset"
+        id="reset" data-i18n="optionsReset"></button>
       <div class="option__help">
-          Вы можете назначить свою комбинацию на каждое действие.<br/>
-          Поддерживаемые клавиши:
+          <span data-i18n="optionsYouCanSet"></span><br/>
+          <span data-i18n="optionsSupportedKeysTitle"></span>:
+
           <span class="hotkeys_combination">A–Z</span>, 
           <span class="hotkeys_combination">0–9</span>, 
           <span class="hotkeys_combination">F1–F12</span>, 
-          <span class="hotkeys_combination">Comma</span> (запятая), 
-          <span class="hotkeys_combination">Period</span> (точка), 
+          <span class="hotkeys_combination">Comma</span><span data-i18n="optionsKeyComma"></span>, 
+          <span class="hotkeys_combination">Period</span><span data-i18n="optionsKeyPeriod"></span>, 
           <span class="hotkeys_combination">Home</span>, 
           <span class="hotkeys_combination">End</span>, 
           <span class="hotkeys_combination">PageUp</span>, 
           <span class="hotkeys_combination">PageDown</span>, 
-          <span class="hotkeys_combination">Space</span> (пробел), 
+          <span class="hotkeys_combination">Space</span><span data-i18n="optionsKeySpace"></span>, 
           <span class="hotkeys_combination">Insert</span>, 
           <span class="hotkeys_combination">Delete</span>, 
-          стрелочки (<span class="hotkeys_combination">Up</span>, 
+          <span data-i18n="optionsKeyArrows"></span> 
+          (<span class="hotkeys_combination">Up</span>, 
           <span class="hotkeys_combination">Down</span>, 
           <span class="hotkeys_combination">Left</span>, 
           <span class="hotkeys_combination">Right</span>).
 
           <ul>
             <li>
-              Комбинации обязательно должны включать 
+              <span data-i18n="optionsRulesRequired"></span> 
               <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, 
-              </span><span class="hotkeys_combination">Ctrl</span> или 
+              </span><span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
               <span class="hotkeys_combination">Alt</span>;
             </li>
             <li>
-              Одновременно 
+              <span data-i18n="optionsRulesSimultaneously"></span> 
               <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, </span>
-              <span class="hotkeys_combination">Ctrl</span> и 
-              <span class="hotkeys_combination">Alt</span> нельзя;
+              <span class="hotkeys_combination">Ctrl</span><span data-i18n="optionsRulesAnd"></span> 
+              <span class="hotkeys_combination">Alt</span> <span data-i18n="optionsRulesCannot"></span>;
             </li>
             <li>
-              Можно использовать <span class="hotkeys_combination">Shift</span> 
-              в дополнение к <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, 
-              </span><span class="hotkeys_combination">Ctrl</span> или 
+              <span data-i18n="optionsRulesAllowed"></span> <span class="hotkeys_combination">Shift</span> 
+              <span data-i18n="optionsRulesInAdditionTo"></span> <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, 
+              </span><span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
               <span class="hotkeys_combination">Alt</span>;
             </li>
             <li>
-              Хотя можно использовать клавиши <span class="hotkeys_combination">F1–F12</span> 
-              и без <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, </span>
-              <span class="hotkeys_combination">Ctrl</span> или 
+              <span data-i18n="optionsRulesAlsoAllowed"></span> <span class="hotkeys_combination">F1–F12</span> 
+              <span data-i18n="optionsRulesWithout"></span> <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, </span>
+              <span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
               <span class="hotkeys_combination">Alt</span>;
             </li>
-            <li>Firefox пока что не поддерживает мультимедийные клавиши.</li>
+            <li><span data-i18n="optionsRulesMultimedia"></span></li>
           </ul>
       </div>
 
       <div class="options__list">
         <div>
-          <label class="options__label" for="play">Проигрывание или пауза:</label>
+          <label class="options__label" for="play">
+            <span data-i18n="optionsListPlay"></span>
+          </label>
           <input class="option__input" type="text" name="play" id="play"
             autocomplete="off" placeholder="Ctrl + Shift + O" />
         </div>
         <div>
-          <label class="options__label" for="next">Следующий трек:</label>
+          <label class="options__label" for="next">
+            <span data-i18n="optionsListNext"></span>
+          </label>
           <input class="option__input" type="text" name="next" id="next"
             autocomplete="off" placeholder="Ctrl + Shift + L" />
         </div>
         <div>
-          <label class="options__label" for="prev">Предыдущий трек:</label>
+          <label class="options__label" for="prev">
+            <span data-i18n="optionsListPrev"></span>
+          </label>
           <input class="option__input" type="text" name="prev" id="prev"
             autocomplete="off" placeholder="Ctrl + Shift + K" />
         </div>
         <div>
-          <label class="options__label" for="volumeUp">Громче:</label>
-          <input class="option__input" type="text" name="volumeUp" id="volumeUp"
-            autocomplete="off" placeholder="Ctrl + Shift + ↑" />
+          <label class="options__label" for="volumeUp">
+            <span data-i18n="optionsListVolumeUp"></span>
+          </label>
+          <input class="option__input" type="text" name="volumeUp"
+            id="volumeUp" autocomplete="off" placeholder="Ctrl + Shift + ↑" />
         </div>
         <div>
-          <label class="options__label" for="volumeDown">Тише:</label>
-          <input class="option__input" type="text" name="volumeDown" id="volumeDown"
-            autocomplete="off" placeholder="Ctrl + Shift + ↓" />
+          <label class="options__label" for="volumeDown">
+            <span data-i18n="optionsListVolumeDown"></span>
+          </label>
+          <input class="option__input" type="text" name="volumeDown"
+            id="volumeDown" autocomplete="off" placeholder="Ctrl + Shift + ↓" />
         </div>
       </div>
 
-      <button class="options__button" id="update">Сохранить горячие клавиши</button>
+      <button class="options__button" id="update">
+        <span data-i18n="optionsSave"></span>
+      </button>
     </div>
     <div class="options__section"></div>
   </form>

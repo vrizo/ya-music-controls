@@ -15,6 +15,7 @@ let ctrl = isMac ? 'Cmd' : 'Ctrl'
 
 let localizeUI = () => {
   for (let node of document.querySelectorAll('[data-i18n]')) {
+    // TODO: Remove attr if it is not used anywhere
     let [text, attr] = node.dataset.i18n.split(':')
     text = browser.i18n.getMessage(text)
 
@@ -91,7 +92,7 @@ let updateShortcut = async function () {
 }
 
 let resetShortcut = async function () {
-  if (confirm('Сбросить настройки горячих клавиш?')) {
+  if (confirm(browser.i18n.getMessage('optionsResetConfirm'))) {
     let commands = await browser.commands.getAll()
     commands.forEach(command => {
       browser.commands.reset(command.name)
