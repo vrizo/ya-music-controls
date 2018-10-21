@@ -15,15 +15,9 @@ let ctrl = isMac ? 'Cmd' : 'Ctrl'
 
 let localizeUI = () => {
   for (let node of document.querySelectorAll('[data-i18n]')) {
-    // TODO: Remove attr if it is not used anywhere
-    let [text, attr] = node.dataset.i18n.split(':')
-    text = browser.i18n.getMessage(text)
-
-    if (attr) {
-      node[attr] = text
-    } else {
-      node.appendChild(document.createTextNode(text))
-    }
+    let code = node.dataset.i18n
+    let text = browser.i18n.getMessage(code)
+    node.appendChild(document.createTextNode(text))
   }
 }
 
