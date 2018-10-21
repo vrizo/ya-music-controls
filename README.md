@@ -40,7 +40,6 @@ $ zip -d yandex_music_controls-*.zip "__MACOSX/*"
 
 ## Todo
 
-* Add tracking tag to share buttons (`src parameter that begin with "external-"`)
 * Add :mute: Mute button
 * Auto packager
 
