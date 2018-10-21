@@ -147,5 +147,100 @@
   "optionsSave": {
     "message": "Сохранить горячие клавиши",
     "description": "Save settings"
+  },
+
+  "controlsCover": {
+    "message": "Обложка альбома — ",
+    "description": "Album cover"
+  },
+
+  "controlsChoosePlaylist": {
+    "message": "Выберите плейлист в Яндекс.Музыке",
+    "description": "Choose playlist"
+  },
+
+  "controlsOpen": {
+    "message": "Открыть Я.Музыку",
+    "description": "Open Yandex.Music tab button"
+  },
+
+  "controlsDisliked": {
+    "message": "Не нравится [$KEY$]",
+    "description": "Dislike button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsLiked": {
+    "message": "Нравится [$KEY$]",
+    "description": "Like button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsPlay": {
+    "message": "Играть [$KEY$]",
+    "description": "Play button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsPause": {
+    "message": "Пауза [$KEY$]",
+    "description": "Pause button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsNext": {
+    "message": "Следующий трек [$KEY$]",
+    "description": "Next track button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsPrev": {
+    "message": "Предыдущий трек [$KEY$]",
+    "description": "Previous track button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "messagesManyTabs": {
+    "message": "Вы открыли несколько вкладок с Яндекс.Музыкой. Оставьте одну",
+    "description": "Such error, many tabs"
+  },
+
+  "messagesHotKeys": {
+    "message": "С горячими клавишами удобнее",
+    "description": "Configure hotkeys"
+  },
+
+  "messagesConfigure": {
+    "message": "Настроить",
+    "description": "Go to options"
+  },
+
+  "messagesDismiss": {
+    "message": "Скрыть",
+    "description": "Dismiss button"
   }
 }

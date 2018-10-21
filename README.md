@@ -54,6 +54,7 @@ Please contact [me by email](mailto:kb@kernel-it.ru).
 
 ### 1.5
 * Add localization — now it supports English language
+* Add like/dislike hotkeys
 
 ### 1.4
 

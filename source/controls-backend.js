@@ -22,6 +22,10 @@ let isMac = navigator.platform.indexOf('Mac') > -1
 let ctrl = isMac ? 'Cmd' : 'Ctrl'
 let bg = chrome.extension.getBackgroundPage()
 
+let t = (code, substitution) => {
+  return browser.i18n.getMessage(code, substitution)
+}
+
 let format = combination => {
   if (!combination) return null
   let output = combination.replace(/\+/g, ' + ')
@@ -92,7 +96,7 @@ let updatePopup = response => {
   let playerControls = document.getElementById('playerControls')
   let trackCover = document.getElementById('trackCover')
   let artistName = document.getElementById('artistName')
-  let shareBlock = document.getElementById('share')
+  // let shareBlock = document.getElementById('share')
   let trackName = document.getElementById('trackName')
   let notLoaded = document.getElementById('notLoaded')
   let dislike = document.getElementById('disliked')
@@ -101,6 +105,7 @@ let updatePopup = response => {
   let play = document.getElementById('play')
   let next = document.getElementById('next')
   let prev = document.getElementById('prev')
+  let open = document.getElementById('open')
 
   if (typeof response !== 'undefined') {
     response = response.state
@@ -121,14 +126,15 @@ let updatePopup = response => {
       response.artists.forEach(artist => {
         artists +=
           `<a href="https://${ response.hostname + artist.link }"
-           target="_blank">${ artist.title }</a>, `
+              target="_blank">${ artist.title }</a>, `
       })
 
       /* Album art */
       let albumArtURL = 'https://' + response.cover.slice(0, -2) + '100x100'
 
       trackCover.setAttribute('src', albumArtURL)
-      trackCover.setAttribute('alt', 'Обложка альбома — ' + response.title)
+      trackCover.setAttribute('alt', t('controlsCover') + response.title)
+      trackCover.setAttribute('title', t('controlsCover') + response.title)
       link.setAttribute('href', 'https://' + response.hostname + response.link)
 
       /* Track details */
@@ -138,11 +144,11 @@ let updatePopup = response => {
       like.className = 'button button-ghost enabled-' + response.liked
 
       /* Sharer blocks */
-      shareBlock.style.display = state.isShareShown ? 'block' : 'none'
+      // shareBlock.style.display = state.isShareShown ? 'block' : 'none'
     } else {
       /* If music is not started, but Yandex Music is opened */
-      trackCover.setAttribute('alt', 'Выберите плейлист в Яндекс.Музыке')
-      trackName.textContent = 'Выберите плейлист в Яндекс.Музыке'
+      trackCover.setAttribute('alt', t('controlsChoosePlaylist'))
+      trackName.textContent = t('controlsChoosePlaylist')
     }
   } else {
     /* If no response, then try another Tab ID if exists */
@@ -156,6 +162,7 @@ let updatePopup = response => {
     /* If there is no more Tab ID, then show Not loaded message */
     notLoaded.setAttribute('style', 'display: block;')
     playerControls.setAttribute('style', 'display: none;')
+    open.appendChild(document.createTextNode(t('controlsOpen')))
   }
 
   renderHotkeys()
@@ -196,14 +203,20 @@ let hideLoader = () => {
 }
 
 let renderShare = () => {
-  let share = document.getElementById('share')
+  let shareBlockRu = document.getElementById('share__ru')
+  let shareBlockEn = document.getElementById('share__en')
   let counter = state.pluginCount
+  let lang = browser.i18n.getUILanguage().substr(0, 2)
 
   state.isShareShown = (counter > 15 && counter < 25) ||
     (counter > 85 && counter < 90) ||
     (counter > 165 && counter < 170)
 
-  share.style.display = state.isShareShown ? 'block' : 'none'
+  if (lang === 'ru' || lang === 'uk' || lang === 'be') {
+    shareBlockRu.style.display = state.isShareShown ? 'block' : 'none'
+  } else {
+    shareBlockEn.style.display = state.isShareShown ? 'block' : 'none'
+  }
 }
 
 let renderHotkeys = () => {
@@ -218,14 +231,14 @@ let renderHotkeys = () => {
     let cmds = {}
     list.forEach(i => (cmds[i.name] = i.shortcut))
 
-    dislike.setAttribute('title', `Не нравится [${ format(cmds.disliked) }]`)
-    like.setAttribute('title', `Нравится [${ format(cmds.liked) }]`)
+    dislike.setAttribute('title', t('controlsDisliked', format(cmds.disliked)))
+    like.setAttribute('title', t('controlsLiked', format(cmds.liked)))
     play.setAttribute('title', state.isPlaying
-      ? `Пауза [${ format(cmds.play) }]`
-      : `Играть [${ format(cmds.play) }]`)
-    open.setAttribute('title', `Открыть Я.Музыку [${ format(cmds.play) }]`)
-    prev.setAttribute('title', `Предыдущий трек [${ format(cmds.prev) }]`)
-    next.setAttribute('title', `Следующий трек [${ format(cmds.next) }]`)
+      ? t('controlsPause', format(cmds.play))
+      : t('controlsPlay', format(cmds.play)))
+    open.setAttribute('title', t('controlsOpen') + ` [${ format(cmds.play) }]`)
+    prev.setAttribute('title', t('controlsPrev', format(cmds.prev)))
+    next.setAttribute('title', t('controlsNext', format(cmds.next)))
   })
 }
 
@@ -236,15 +249,15 @@ let renderMessageBar = () => {
   if (!state.tabsBarDismissed && bg.yandexTabID.length > 1) {
     /* Such error, many tabs */
     content = {
-      text: 'Вы открыли несколько вкладок с Яндекс.Музыкой. Оставьте одну',
+      text: t('messagesManyTabs'),
       action: null
     }
     state.barType = 'tabs'
   } else if (!state.hotkeysBarDismissed) {
     content = {
       width: 145,
-      text: 'С горячими клавишами удобнее.',
-      action: 'Настроить'
+      text: t('messagesHotKeys'),
+      action: t('messagesConfigure')
     }
     state.onMessageBarAction = () => browser.runtime.openOptionsPage()
     state.barType = 'hotkeys'
@@ -274,7 +287,7 @@ let renderMessageBar = () => {
     </div>
     <div class="message-bar__dismiss">
       <button class="button button-micro button-ghost"
-              title="Скрыть"
+              title="${ t('messagesDismiss') }"
               id="message-bar__dismiss"
       >
         <object data="icons/close.svg"

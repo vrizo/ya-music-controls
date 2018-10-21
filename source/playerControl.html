@@ -19,11 +19,11 @@
           <button class="button button-ghost" id="next">
             <object type="image/svg+xml" data="icons/next.svg" tabindex="-1"></object>
           </button>
-          <button class="button button-ghost enabled-false" id="liked" title="Добавить в &laquo;Мою музыку&raquo;">
+          <button class="button button-ghost enabled-false" id="liked">
             <object type="image/svg+xml" data="icons/like.svg" class="enabled-false" tabindex="-1"></object>
             <object type="image/svg+xml" data="icons/like-active.svg" class="enabled-true" tabindex="-1"></object>
           </button>
-          <button class="button button-ghost enabled-false" id="disliked" title="Не рекомендовать">
+          <button class="button button-ghost enabled-false" id="disliked">
             <object type="image/svg+xml" data="icons/dislike.svg" class="enabled-false" tabindex="-1"></object>
             <object type="image/svg+xml" data="icons/dislike-active.svg" class="enabled-true" tabindex="-1"></object>
           </button>
@@ -33,7 +33,7 @@
             <div id="loader" class="current__loader">
               <div class="current__loader-icon"></div>
             </div>
-            <img id="trackCover" class="current__cover" src="" alt="Обложка не загружена">
+            <img id="trackCover" class="current__cover" src="" alt="">
           </a>
           <div>
             <span id="trackName" class="current_name"></span>
@@ -43,15 +43,22 @@
         </div>
       </div>
       <div id="notLoaded">
-        <button class="button button-primary button-puffy" id="open">Открыть Я.Музыку</button>
+        <button class="button button-primary button-puffy" id="open"></button>
       </div>
     </div>
-    <div class="share" id="share">
+    <div class="share" id="share__ru">
       <p class="share__info">Понравился плагин? Поделись с друзьями:</p>
       <div>
         <a class="share__button share__button-vk" target="_blank" title="Поделиться в ВК" href="http://vk.com/share.php?url=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&title=Кнопки%20для%20управления%20Яндекс%20Музыкой&image=http%3A%2F%2Fsquirrel-research.ru%2Fwp-content%2Fuploads%2F2017%2F05%2Ficon-sharer.png"></a>
         <a class="share__button share__button-fb" target="_blank" title="Поделиться в Facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F"></a>
-        <a class="share__button share__button-tw" target="_blank" title="Поделиться в Twitter" href="https://twitter.com/share?url=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&text=Удобный%20плагин%20для%20управления%20Яндекс%20Музыкой&hashtags=КнопкиМузыки"></a>
+        <a class="share__button share__button-tw" target="_blank" title="Поделиться в Twitter" href="https://twitter.com/share?url=https%3A%2F%2Faddons.mozilla.org%2Fru%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&text=Удобный%20плагин%20для%20управления%20Яндекс%20Музыкой&hashtags=КнопкиМузыки,ЯндексМузыка"></a>
+      </div>
+    </div>
+    <div class="share" id="share__en">
+      <p class="share__info">Like the plugin? Share with your friends:</p>
+      <div>
+        <a class="share__button share__button-fb" target="_blank" title="Share on Facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Faddons.mozilla.org%2Fen-US%2Ffirefox%2Faddon%2Fyandex-music-controls%2F"></a>
+        <a class="share__button share__button-tw" target="_blank" title="Share on Twitter" href="https://twitter.com/share?url=https%3A%2F%2Faddons.mozilla.org%2Fen-US%2Ffirefox%2Faddon%2Fyandex-music-controls%2F&text=Best%20Firefox%20plugin%20to%20control%20Yandex.Music&hashtags=YandexMusic,Firefox"></a>
       </div>
     </div>
     <script src="controls-backend.js"></script>

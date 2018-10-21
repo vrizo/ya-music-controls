@@ -41,17 +41,17 @@
 
   "optionsKeyComma": {
     "message": "",
-    "description": "Comma key"
+    "description": "Comma key (no text in English)"
   },
 
   "optionsKeyPeriod": {
     "message": "",
-    "description": "Period key"
+    "description": "Period key (no text in English)"
   },
 
   "optionsKeySpace": {
     "message": "",
-    "description": "Space key"
+    "description": "Space key (no text in English)"
   },
 
   "optionsKeyArrows": {
@@ -70,8 +70,8 @@
   },
 
   "optionsRulesSimultaneously": {
-    "message": "Simultaneously",
-    "description": "Simultaneously"
+    "message": "",
+    "description": "Simultaneously (no text in English)"
   },
 
   "optionsRulesAnd": {
@@ -80,8 +80,8 @@
   },
 
   "optionsRulesCannot": {
-    "message": "can’t be used",
-    "description": "Can not"
+    "message": "can’t be used simultaneously",
+    "description": "Can not be used simultaneously"
   },
 
   "optionsRulesAllowed": {
@@ -147,5 +147,100 @@
   "optionsSave": {
     "message": "Save hotkeys",
     "description": "Save settings"
+  },
+
+  "controlsCover": {
+    "message": "Album cover — ",
+    "description": "Album cover"
+  },
+
+  "controlsChoosePlaylist": {
+    "message": "Select a playlist in Yandex.Music",
+    "description": "Choose playlist"
+  },
+
+  "controlsOpen": {
+    "message": "Open Yandex.Music",
+    "description": "Open Yandex.Music tab button"
+  },
+
+  "controlsDisliked": {
+    "message": "Dislike [$KEY$]",
+    "description": "Dislike button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsLiked": {
+    "message": "Like [$KEY$]",
+    "description": "Like button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsPlay": {
+    "message": "Play [$KEY$]",
+    "description": "Play button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsPause": {
+    "message": "Pause [$KEY$]",
+    "description": "Pause button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsNext": {
+    "message": "Next track [$KEY$]",
+    "description": "Next track button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "controlsPrev": {
+    "message": "Previous track [$KEY$]",
+    "description": "Previous track button",
+    "placeholders": {
+      "key" : {
+        "content" : "$1"
+      }
+    }
+  },
+
+  "messagesManyTabs": {
+    "message": "Multiple Yandex.Music tabs detected. Leave single one",
+    "description": "Such error, many tabs"
+  },
+
+  "messagesHotKeys": {
+    "message": "It’s better with keyboard shortcuts",
+    "description": "Configure hotkeys"
+  },
+
+  "messagesConfigure": {
+    "message": "Configure",
+    "description": "Go to options"
+  },
+
+  "messagesDismiss": {
+    "message": "Dismiss",
+    "description": "Dismiss button"
   }
 }
