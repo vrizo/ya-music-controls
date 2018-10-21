@@ -40,6 +40,7 @@ $ zip -d yandex_music_controls-*.zip "__MACOSX/*"
 
 ## Todo
 
+* Get rid of unsafe assignment to innerHTML
 * Add :mute: Mute button
 * Auto packager
 
@@ -50,6 +51,9 @@ Please contact [me by email](mailto:kb@kernel-it.ru).
 *Права на отдельные компоненты, составляющие дизайн настоящей программы для ЭВМ "Yandex Music Controls", принадлежат ООО «ЯНДЕКС».*
 
 ## Changelog
+
+### 1.5.1
+* Hotfix: add `music.yandex.com` to manifest
 
 ### 1.5
 * Add localization — now it supports English language

@@ -5,7 +5,7 @@
  * https://github.com/killbillsbor/ya-music-controls
  * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.5
+ * v.1.5.1
  */
 
 'use strict'
