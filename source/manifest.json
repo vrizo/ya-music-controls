@@ -55,6 +55,18 @@
         "default": "Ctrl+Shift+Down"
       },
       "description": "Send a 'volumeDown' action"
+    },
+    "liked": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+0"
+      },
+      "description": "Send a 'liked' action"
+    },
+    "disliked": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+9"
+      },
+      "description": "Send a 'disliked' action"
     }
   },
   "options_ui": {

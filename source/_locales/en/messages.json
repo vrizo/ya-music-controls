@@ -124,6 +124,16 @@
     "description": "Prev track"
   },
 
+  "optionsListLiked": {
+    "message": "Like track:",
+    "description": "Like track"
+  },
+
+  "optionsListDisliked": {
+    "message": "Dislike track:",
+    "description": "Dislike track"
+  },
+
   "optionsListVolumeUp": {
     "message": "Volume up:",
     "description": "Volume up"

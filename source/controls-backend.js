@@ -207,21 +207,25 @@ let renderShare = () => {
 }
 
 let renderHotkeys = () => {
+  let dislike = document.getElementById('disliked')
+  let like = document.getElementById('liked')
   let play = document.getElementById('play')
   let open = document.getElementById('open')
   let prev = document.getElementById('prev')
   let next = document.getElementById('next')
 
   browser.commands.getAll().then(list => {
-    let commands = {}
-    list.forEach(i => (commands[i.name] = i.shortcut))
+    let cmds = {}
+    list.forEach(i => (cmds[i.name] = i.shortcut))
 
+    dislike.setAttribute('title', `Не нравится [${ format(cmds.disliked) }]`)
+    like.setAttribute('title', `Нравится [${ format(cmds.liked) }]`)
     play.setAttribute('title', state.isPlaying
-      ? `Пауза [${ format(commands.play) }]`
-      : `Играть [${ format(commands.play) }]`)
-    open.setAttribute('title', `Открыть Я.Музыку [${ format(commands.play) }]`)
-    prev.setAttribute('title', `Предыдущий трек [${ format(commands.prev) }]`)
-    next.setAttribute('title', `Следующий трек [${ format(commands.next) }]`)
+      ? `Пауза [${ format(cmds.play) }]`
+      : `Играть [${ format(cmds.play) }]`)
+    open.setAttribute('title', `Открыть Я.Музыку [${ format(cmds.play) }]`)
+    prev.setAttribute('title', `Предыдущий трек [${ format(cmds.prev) }]`)
+    next.setAttribute('title', `Следующий трек [${ format(cmds.next) }]`)
   })
 }
 
