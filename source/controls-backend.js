@@ -96,7 +96,6 @@ let updatePopup = response => {
   let playerControls = document.getElementById('playerControls')
   let trackCover = document.getElementById('trackCover')
   let artistName = document.getElementById('artistName')
-  // let shareBlock = document.getElementById('share')
   let trackName = document.getElementById('trackName')
   let notLoaded = document.getElementById('notLoaded')
   let dislike = document.getElementById('disliked')
@@ -142,9 +141,6 @@ let updatePopup = response => {
       artistName.innerHTML = artists.slice(0, -2)
       dislike.className = 'button button-ghost enabled-' + response.disliked
       like.className = 'button button-ghost enabled-' + response.liked
-
-      /* Sharer blocks */
-      // shareBlock.style.display = state.isShareShown ? 'block' : 'none'
     } else {
       /* If music is not started, but Yandex Music is opened */
       trackCover.setAttribute('alt', t('controlsChoosePlaylist'))
@@ -180,7 +176,7 @@ window.onload = () => {
     if (storage.pluginCount % 5 === 0) {
       state.tabsBarDismissed = false
     }
-    if (storage.pluginCount % 250 === 0) {
+    if (storage.pluginCount % 200 === 0) {
       state.hotkeysBarDismissed = false
     }
 
