@@ -6,19 +6,28 @@
  * https://github.com/killbillsbor/ya-music-controls
  * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.5.1
+ * v.1.6
  */
 
 'use strict'
 
+let prevTrackName
 var yandexTabID = [] // eslint-disable-line
 
-chrome.runtime.onMessage.addListener((request, sender) => {
-  if (request.greeting === 'hello') {
+chrome.runtime.onMessage.addListener((response, sender) => {
+  if (response.greeting === 'hello') {
     /* Add Tab ID to the end of IDs array */
     yandexTabID.push(sender.tab.id)
-  } else if (request.greeting === 'bye') {
+  } else if (response.greeting === 'bye') {
     yandexTabID = yandexTabID.filter(item => item !== sender.tab.id)
+  } else if (response.state && prevTrackName !== response.state.title) {
+    browser.notifications.create('music-notification', {
+      message: response.state.artists.map(artist => artist.title).join(', '),
+      iconUrl: 'https://' + response.state.cover.slice(0, -2) + '100x100',
+      title: response.state.title,
+      type: 'basic'
+    })
+    prevTrackName = response.state.title
   }
 })
 
