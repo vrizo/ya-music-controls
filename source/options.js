@@ -2,10 +2,10 @@
  * Options script for Yandex Music player control.
  * Author Vitalii Rizo
  * http://squirrel-research.ru
- * https://github.com/killbillsbor/ya-music-controls
+ * https://github.com/vrizo/ya-music-controls
  * (c) 2016-2018
  * Yandex Music Player Control Plugin
- * v.1.5.1
+ * v.1.6
  */
 
 'use strict'
@@ -79,8 +79,8 @@ let updateShortcut = async function () {
   commands.forEach(command => {
     let input = document.getElementById(command.name)
     browser.commands.update({
-      name: command.name,
-      shortcut: deformat(input.value)
+      shortcut: deformat(input.value),
+      name: command.name
     })
   })
 }

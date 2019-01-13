@@ -3,7 +3,7 @@
   "version": "1.6",
   "description": "Ya.Music Controls plugin let you quickly see what’s currently playing, change a song, and play or pause music without changing a tab.",
   "main": "index.js",
-  "repository": "https://github.com/killbillsbor/ya-music-controls.git",
+  "repository": "https://github.com/vrizo/ya-music-controls.git",
   "author": "<kb@kernel-it.ru>",
   "license": "GPL-3.0-only",
   "private": false,
