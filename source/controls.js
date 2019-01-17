@@ -10,6 +10,7 @@
 
 'use strict'
 
+let isPopupAction = false
 let state
 
 /* Send message to Background Script to get
@@ -26,18 +27,22 @@ let sendPlayerState = () => {
   state = {
     ...api.getCurrentTrack(),
     ...api.getControls(),
+    isPopupAction: !!isPopupAction,
     isPlaying: api.isPlaying(),
     hostname: window.location.hostname,
     volume: api.getVolume() || 0
   }
 
   chrome.runtime.sendMessage({ state })
+  isPopupAction = false
 }
 
 /* Listen to commands from buttons: */
 chrome.runtime.onMessage.addListener(request => {
   if (request) {
     let api = window.wrappedJSObject.externalAPI
+    isPopupAction = request.isPopupAction
+
     switch (request.action) {
       case 'next':
         api.next()

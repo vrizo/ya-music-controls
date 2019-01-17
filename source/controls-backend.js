@@ -56,7 +56,7 @@ document.addEventListener('click', e => {
     saveSettings()
   } else {
     showLoader()
-    chrome.tabs.sendMessage(state.yandexTabID, { action })
+    chrome.tabs.sendMessage(state.yandexTabID, { action, isPopupAction: true })
   }
   e.target.blur()
 })
