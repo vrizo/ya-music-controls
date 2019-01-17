@@ -10,8 +10,10 @@
 
 'use strict'
 
+let notificationsCheckbox = document.getElementById('notifications')
 let isMac = navigator.platform.indexOf('Mac') > -1
 let ctrl = isMac ? 'Cmd' : 'Ctrl'
+let bg = chrome.extension.getBackgroundPage()
 
 let localizeUI = () => {
   for (let node of document.querySelectorAll('[data-i18n]')) {
@@ -66,11 +68,24 @@ let init = () => {
 
 let updateUI = async function () {
   let commands = await browser.commands.getAll()
+  let settings = browser.storage.local.get()
+
+  settings.then(storage => {
+    notificationsCheckbox.checked = storage.notifications || false
+  })
   commands.forEach(command => {
     let input = document.getElementById(command.name)
     input.value = format(command.shortcut)
     input.placeholder = format(input.placeholder)
     input.addEventListener('keyup', evt => validate(evt))
+  })
+}
+
+let updateNotifications = function () {
+  let value = document.getElementById('notifications').checked
+  bg.isNotificationsEnabled = value
+  browser.storage.local.set({
+    notifications: value
   })
 }
 
@@ -96,5 +111,6 @@ let resetShortcut = async function () {
 }
 
 document.addEventListener('DOMContentLoaded', init)
-document.querySelector('#update').addEventListener('click', updateShortcut)
-document.querySelector('#reset').addEventListener('click', resetShortcut)
+notificationsCheckbox.addEventListener('change', updateNotifications)
+document.getElementById('update').addEventListener('click', updateShortcut)
+document.getElementById('reset').addEventListener('click', resetShortcut)

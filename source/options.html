@@ -9,58 +9,74 @@
 <body>
   <form class="options">
     <div class="options__section">
-      <legend class="options__legend" data-i18n="optionsLegend"></legend>
+      <h2 class="options__title" data-i18n="optionsTitle"></h2>
       <button class="options__button options__section-reset"
         id="reset" data-i18n="optionsReset"></button>
+
+      <div class="options__list">
+        <div class="browser-style">
+          <input class="option__checkbox" type="checkbox" name="notifications"
+            id="notifications" />
+          <label class="options__label option__checkbox-label" for="notifications">
+            <span data-i18n="optionsListNotifications"></span>
+          </label>
+          <div class="option__checkbox-description option__checkbox-description_enabled" data-i18n="optionsListNotificationsEnabled"></div>
+          <div class="option__checkbox-description option__checkbox-description_disabled" data-i18n="optionsListNotificationsDisabled"></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="options__title" data-i18n="optionsHotkeys"></h3>
+
       <div class="option__help">
-          <span data-i18n="optionsYouCanSet"></span><br/>
-          <span data-i18n="optionsSupportedKeysTitle"></span>:
+        <span data-i18n="optionsYouCanSet"></span><br/>
+        <span data-i18n="optionsSupportedKeysTitle"></span>:
 
-          <span class="hotkeys_combination">A–Z</span>, 
-          <span class="hotkeys_combination">0–9</span>, 
-          <span class="hotkeys_combination">F1–F12</span>, 
-          <span class="hotkeys_combination">Comma</span><span data-i18n="optionsKeyComma"></span>, 
-          <span class="hotkeys_combination">Period</span><span data-i18n="optionsKeyPeriod"></span>, 
-          <span class="hotkeys_combination">Home</span>, 
-          <span class="hotkeys_combination">End</span>, 
-          <span class="hotkeys_combination">PageUp</span>, 
-          <span class="hotkeys_combination">PageDown</span>, 
-          <span class="hotkeys_combination">Space</span><span data-i18n="optionsKeySpace"></span>, 
-          <span class="hotkeys_combination">Insert</span>, 
-          <span class="hotkeys_combination">Delete</span>, 
-          <span data-i18n="optionsKeyArrows"></span> 
-          (<span class="hotkeys_combination">Up</span>, 
-          <span class="hotkeys_combination">Down</span>, 
-          <span class="hotkeys_combination">Left</span>, 
-          <span class="hotkeys_combination">Right</span>).
+        <span class="hotkeys_combination">A–Z</span>, 
+        <span class="hotkeys_combination">0–9</span>, 
+        <span class="hotkeys_combination">F1–F12</span>, 
+        <span class="hotkeys_combination">Comma</span><span data-i18n="optionsKeyComma"></span>, 
+        <span class="hotkeys_combination">Period</span><span data-i18n="optionsKeyPeriod"></span>, 
+        <span class="hotkeys_combination">Home</span>, 
+        <span class="hotkeys_combination">End</span>, 
+        <span class="hotkeys_combination">PageUp</span>, 
+        <span class="hotkeys_combination">PageDown</span>, 
+        <span class="hotkeys_combination">Space</span><span data-i18n="optionsKeySpace"></span>, 
+        <span class="hotkeys_combination">Insert</span>, 
+        <span class="hotkeys_combination">Delete</span>, 
+        <span data-i18n="optionsKeyArrows"></span> 
+        (<span class="hotkeys_combination">Up</span>, 
+        <span class="hotkeys_combination">Down</span>, 
+        <span class="hotkeys_combination">Left</span>, 
+        <span class="hotkeys_combination">Right</span>).
 
-          <ul>
-            <li>
-              <span data-i18n="optionsRulesRequired"></span> 
-              <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, 
-              </span><span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
-              <span class="hotkeys_combination">Alt</span>;
-            </li>
-            <li>
-              <span data-i18n="optionsRulesAlsoAllowed"></span> <span class="hotkeys_combination">F1–F12</span> 
-              <span data-i18n="optionsRulesWithout"></span> <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, </span>
-              <span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
-              <span class="hotkeys_combination">Alt</span>;
-            </li>
-            <li>
-              <span data-i18n="optionsRulesSimultaneously"></span> 
-              <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, </span>
-              <span class="hotkeys_combination">Ctrl</span><span data-i18n="optionsRulesAnd"></span> 
-              <span class="hotkeys_combination">Alt</span> <span data-i18n="optionsRulesCannot"></span>;
-            </li>
-            <li>
-              <span data-i18n="optionsRulesAllowed"></span> <span class="hotkeys_combination">Shift</span> 
-              <span data-i18n="optionsRulesInAdditionTo"></span> <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, 
-              </span><span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
-              <span class="hotkeys_combination">Alt</span>;
-            </li>
-            <li><span data-i18n="optionsRulesMultimedia"></span></li>
-          </ul>
+        <ul>
+          <li>
+            <span data-i18n="optionsRulesRequired"></span> 
+            <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, 
+            </span><span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
+            <span class="hotkeys_combination">Alt</span>;
+          </li>
+          <li>
+            <span data-i18n="optionsRulesAlsoAllowed"></span> <span class="hotkeys_combination">F1–F12</span> 
+            <span data-i18n="optionsRulesWithout"></span> <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, </span>
+            <span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
+            <span class="hotkeys_combination">Alt</span>;
+          </li>
+          <li>
+            <span data-i18n="optionsRulesSimultaneously"></span> 
+            <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, </span>
+            <span class="hotkeys_combination">Ctrl</span><span data-i18n="optionsRulesAnd"></span> 
+            <span class="hotkeys_combination">Alt</span> <span data-i18n="optionsRulesCannot"></span>;
+          </li>
+          <li>
+            <span data-i18n="optionsRulesAllowed"></span> <span class="hotkeys_combination">Shift</span> 
+            <span data-i18n="optionsRulesInAdditionTo"></span> <span class="mac-only"><span class="hotkeys_combination">Cmd</span>, 
+            </span><span class="hotkeys_combination">Ctrl</span> <span data-i18n="optionsRulesOr"></span> 
+            <span class="hotkeys_combination">Alt</span>;
+          </li>
+          <li><span data-i18n="optionsRulesMultimedia"></span></li>
+        </ul>
       </div>
 
       <div class="options__list">

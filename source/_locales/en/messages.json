@@ -14,9 +14,14 @@
     "description": "Title of the icon button"
   },
 
-  "optionsLegend": {
-    "message": "Hotkeys",
+  "optionsTitle": {
+    "message": "Settings",
     "description": "Options page title"
+  },
+
+  "optionsHotkeys": {
+    "message": "Hotkeys",
+    "description": "Options page hotkeys subtitle"
   },
 
   "optionsReset": {
@@ -107,6 +112,21 @@
   "optionsRulesMultimedia": {
     "message": "Firefox doesn’t support multimedia keys yet.",
     "description": "Multimedia keys are not supported"
+  },
+
+  "optionsListNotifications": {
+    "message": "Enable Notifications",
+    "description": "Notifications checkbox"
+  },
+
+  "optionsListNotificationsDisabled": {
+    "message": "🙈 Notifications are not displayed",
+    "description": "Notifications checkbox description disabled"
+  },
+
+  "optionsListNotificationsEnabled": {
+    "message": "🙉 Notifications appear when changing tracks",
+    "description": "Notifications checkbox description enabled"
   },
 
   "optionsListPlay": {

@@ -14,9 +14,14 @@
     "description": "Title of the icon button"
   },
 
-  "optionsPage": {
+  "optionsTitle": {
     "message": "Горячие клавиши",
     "description": "Options page title"
+  },
+
+  "optionsHotkeys": {
+    "message": "Горячие клавиши",
+    "description": "Options page hotkeys subtitle"
   },
 
   "optionsReset": {
@@ -107,6 +112,22 @@
   "optionsRulesMultimedia": {
     "message": "Firefox пока что не поддерживает мультимедийные клавиши.",
     "description": "Multimedia keys are not supported"
+  },
+
+  "optionsListNotifications": {
+    "message": "Включить Уведомления",
+    "description": "Notifications checkbox"
+  },
+
+
+  "optionsListNotificationsDisabled": {
+    "message": "🙈 Уведомления о текущем треке не отображаются",
+    "description": "Notifications checkbox description disabled"
+  },
+  
+  "optionsListNotificationsEnabled": {
+    "message": "🙉 Уведомления появляются при смене трека",
+    "description": "Notifications checkbox description enabled"
   },
 
   "optionsListPlay": {
