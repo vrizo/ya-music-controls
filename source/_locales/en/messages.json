@@ -254,6 +254,11 @@
     "description": "Configure hotkeys"
   },
 
+  "messagesNotifications": {
+    "message": "Now support Notifications",
+    "description": "Configure notifications"
+  },
+
   "messagesConfigure": {
     "message": "Configure",
     "description": "Go to options"

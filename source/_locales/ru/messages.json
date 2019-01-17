@@ -15,7 +15,7 @@
   },
 
   "optionsTitle": {
-    "message": "Горячие клавиши",
+    "message": "Настройки",
     "description": "Options page title"
   },
 
@@ -253,6 +253,11 @@
   "messagesHotKeys": {
     "message": "С горячими клавишами удобнее",
     "description": "Configure hotkeys"
+  },
+
+  "messagesNotifications": {
+    "message": "Уведомления при переключении треков",
+    "description": "Configure notifications"
   },
 
   "messagesConfigure": {

@@ -167,6 +167,7 @@ let updatePopup = response => {
 window.onload = () => {
   let gettingSettings = browser.storage.local.get()
   gettingSettings.then(storage => {
+    state.notificationsBarDismissed = storage.notificationsBarDismissed
     state.hotkeysBarDismissed = storage.hotkeysBarDismissed
     state.tabsBarDismissed = storage.tabsBarDismissed
     state.isShareShown = storage.isShareShown
@@ -257,6 +258,14 @@ let renderMessageBar = () => {
     }
     state.onMessageBarAction = () => browser.runtime.openOptionsPage()
     state.barType = 'hotkeys'
+  } else if (!state.notificationsBarDismissed) {
+    content = {
+      width: 145,
+      text: t('messagesNotifications'),
+      action: t('messagesConfigure')
+    }
+    state.onMessageBarAction = () => browser.runtime.openOptionsPage()
+    state.barType = 'notifications'
   }
 
   let output = `

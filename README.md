@@ -52,6 +52,10 @@ Please contact [me by email](mailto:kb@kernel-it.ru).
 
 *Права на отдельные компоненты, составляющие дизайн настоящей программы для ЭВМ "Yandex Music Controls", принадлежат ООО «ЯНДЕКС».*
 
+## Special thanks
+
+:octocat: [Alexander Marfitsin @marfitsin](https://github.com/marfitsin) — Text Refactoring
+
 ## Changelog
 
 ### 1.6
