@@ -221,6 +221,9 @@ button::-moz-focus-inner {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
+.current_artist a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
 
 /* Not loaded state */
 #notLoaded {
