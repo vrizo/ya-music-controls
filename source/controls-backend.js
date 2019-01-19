@@ -110,10 +110,11 @@ let updatePopup = response => {
   if (typeof response !== 'undefined') {
     response = response.state
     state.isPlaying = response.isPlaying
+    state.isRadio = response.prev === null
 
     play.setAttribute('class',
       'button button-ghost ' + (state.isPlaying ? 'pause' : ''))
-    response.next
+    response.next || state.isRadio
       ? next.removeAttribute('disabled')
       : next.setAttribute('disabled', 'disabled')
     response.prev
