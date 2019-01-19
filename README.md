@@ -60,6 +60,8 @@ Please contact [me by email](mailto:kb@kernel-it.ru).
 
 ### 1.6
 * Add optional notifications with track info
+* Panel icon indicates player state and like badge now
+* Unavailable Next button in Radio bug fix
 
 ### 1.5.1
 * Hotfix: add `music.yandex.com` to manifest
