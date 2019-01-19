@@ -84,6 +84,7 @@ let checkMusicState = () => {
         state.yandexTabID = undefined
       } else {
         chrome.tabs.sendMessage(state.yandexTabID, {
+          isPopupAction: true,
           action: 'GET_PLAYER_STATE'
         })
       }
