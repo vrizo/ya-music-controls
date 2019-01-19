@@ -87,7 +87,8 @@ let initializeMusicControls = () => {
   /* Create an observer instance */
   let observer = new MutationObserver(mutation => {
     /* If changes caused by track then: */
-    if (mutation[0].attributeName === 'data-unity-state') {
+    if (mutation[0].attributeName === 'data-unity-state' ||
+        mutation[0].attributeName === 'data-unity-supports') {
       sendPlayerState()
     }
   })
