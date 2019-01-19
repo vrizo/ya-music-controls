@@ -14,6 +14,7 @@
 var isNotificationsEnabled = false // eslint-disable-line
 let prevTrackName
 var yandexTabID = [] // eslint-disable-line
+let currStatus = 'play'
 let settings = browser.storage.local.get()
 
 chrome.runtime.onMessage.addListener((response, sender) => {
@@ -39,6 +40,20 @@ chrome.runtime.onMessage.addListener((response, sender) => {
       type: 'basic'
     })
     prevTrackName = response.state.title
+  }
+
+  /* Update panel icon */
+  if (response.state) {
+    let status
+    status = response.state.isPlaying ? 'play' : 'pause'
+    status += response.state.liked ? '-like' : ''
+
+    if (currStatus !== status) {
+      currStatus = status
+      browser.browserAction.setIcon({
+        path: 'icon-48-panel-' + status + '.png'
+      })
+    }
   }
 })
 

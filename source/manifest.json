@@ -16,7 +16,7 @@
     }
   },
   "browser_action": {
-    "default_icon": "icon-48-panel.png",
+    "default_icon": "icon-48-panel-play.png",
     "default_title": "__MSG_actionTitle__",
     "default_popup": "playerControl.html"
   },
