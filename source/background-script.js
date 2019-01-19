@@ -23,11 +23,10 @@ chrome.runtime.onMessage.addListener((response, sender) => {
     yandexTabID.push(sender.tab.id)
   } else if (response.greeting === 'bye') {
     yandexTabID = yandexTabID.filter(item => item !== sender.tab.id)
-  } else if (!prevTrackName) {
+  } else if (!prevTrackName && response.state) {
     prevTrackName = response.state.title
   } else if (
     response.state &&
-    response.state.title &&
     isNotificationsEnabled &&
     response.state.isPlaying &&
     !response.state.isPopupAction &&
