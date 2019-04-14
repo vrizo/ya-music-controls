@@ -150,6 +150,17 @@
     "description": "Prev track"
   },
 
+  "optionsListForward": {
+    "message": "Перемотка вперёд:",
+    "description": "Seek forward"
+  },
+
+  "optionsListBackward": {
+    "message": "Перемотка назад:",
+    "description": "Seek backward"
+  },
+
+
   "optionsListLiked": {
     "message": "Нравится:",
     "description": "Like track"

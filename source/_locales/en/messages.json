@@ -149,6 +149,16 @@
     "description": "Prev track"
   },
 
+  "optionsListForward": {
+    "message": "Seek forward:",
+    "description": "Seek forward"
+  },
+
+  "optionsListBackward": {
+    "message": "Seek backward:",
+    "description": "Seek backward"
+  },
+
   "optionsListLiked": {
     "message": "Like track:",
     "description": "Like track"
