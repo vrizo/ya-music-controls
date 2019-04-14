@@ -41,7 +41,6 @@ $ zip -d yandex_music_controls-*.zip "__MACOSX/*"
 ## Todo
 
 * Add 'Skip' button to Notifications when Firefox add this feature
-* Allow usage of Multimedia keys on Options page when Firefox add this feature
 * Get rid of unsafe assignment to innerHTML
 * Add :mute: Mute button
 * Auto packager
@@ -57,6 +56,11 @@ Please contact [me by email](mailto:kb@kernel-it.ru).
 :octocat: [Alexander Marfitsin @marfitsin](https://github.com/marfitsin) — Text Refactoring
 
 ## Changelog
+
+### 1.7
+* Media keys support in Windows and Linux
+* Added seeking by hotkeys feature
+* Fixed clickable area of control buttons (FF 66+)
 
 ### 1.6
 * Add optional notifications with track info
