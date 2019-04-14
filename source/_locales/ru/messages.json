@@ -110,8 +110,13 @@
   },
 
   "optionsRulesMultimedia": {
-    "message": "Firefox пока что не поддерживает мультимедийные клавиши.",
-    "description": "Multimedia keys are not supported"
+    "message": "Доступы и мультимедийные клавиши: ",
+    "description": "You can use media keys"
+  },
+
+  "optionsRulesMultimediaMac": {
+    "message": "Однако, Firefox пока что не поддерживает мультимедийные клавиши в macOS.",
+    "description": "Multimedia keys are not supported in macOS"
   },
 
   "optionsListNotifications": {

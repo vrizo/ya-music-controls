@@ -110,8 +110,13 @@
   },
 
   "optionsRulesMultimedia": {
-    "message": "Firefox doesn’t support multimedia keys yet.",
-    "description": "Multimedia keys are not supported"
+    "message": "You can use media keys: ",
+    "description": "You can use media keys"
+  },
+
+  "optionsRulesMultimediaMac": {
+    "message": "Unfortunately, Firefox doesn’t support multimedia keys yet in macOS.",
+    "description": "Multimedia keys are not supported in macOS"
   },
 
   "optionsListNotifications": {
