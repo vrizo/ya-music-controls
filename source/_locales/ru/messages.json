@@ -276,6 +276,11 @@
     "description": "Configure notifications"
   },
 
+  "messagesSeek": {
+    "message": "Перемотка горячими клавишами",
+    "description": "Configure seek hotkeys"
+  },
+
   "messagesConfigure": {
     "message": "Настроить",
     "description": "Go to options"

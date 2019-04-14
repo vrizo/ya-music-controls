@@ -5,7 +5,7 @@
  * https://github.com/vrizo/ya-music-controls
  * (c) 2016–2019
  * Yandex Music Player Control Plugin
- * v.1.6
+ * v.1.7
  */
 
 'use strict'
@@ -171,6 +171,7 @@ window.onload = () => {
   gettingSettings.then(storage => {
     state.notificationsBarDismissed = storage.notificationsBarDismissed
     state.hotkeysBarDismissed = storage.hotkeysBarDismissed
+    state.seekBarDismissed = storage.seekBarDismissed
     state.tabsBarDismissed = storage.tabsBarDismissed
     state.isShareShown = storage.isShareShown
     state.yandexTabID = storage.yandexTabID || state.yandexTabID
@@ -268,6 +269,14 @@ let renderMessageBar = () => {
     }
     state.onMessageBarAction = () => browser.runtime.openOptionsPage()
     state.barType = 'notifications'
+  } else if (state.seekBarDismissed && state.pluginCount > 0) {
+    content = {
+      width: 145,
+      text: t('messagesSeek'),
+      action: t('messagesConfigure')
+    }
+    state.onMessageBarAction = () => browser.runtime.openOptionsPage()
+    state.barType = 'seek'
   }
 
   let output = `

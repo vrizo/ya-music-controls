@@ -274,6 +274,11 @@
     "description": "Configure notifications"
   },
 
+  "messagesSeek": {
+    "message": "Seek Forward and Backward",
+    "description": "Configure seek hotkeys"
+  },
+
   "messagesConfigure": {
     "message": "Configure",
     "description": "Go to options"
