@@ -269,7 +269,7 @@ let renderMessageBar = () => {
     }
     state.onMessageBarAction = () => browser.runtime.openOptionsPage()
     state.barType = 'notifications'
-  } else if (state.seekBarDismissed && state.pluginCount > 0) {
+  } else if (!state.seekBarDismissed && state.pluginCount > 30) {
     content = {
       width: 145,
       text: t('messagesSeek'),
