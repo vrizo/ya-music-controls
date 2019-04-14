@@ -6,7 +6,7 @@
  * https://github.com/vrizo/ya-music-controls
  * (c) 2016–2019
  * Yandex Music Player Control Plugin
- * v.1.6
+ * v.1.7
  */
 
 'use strict'
