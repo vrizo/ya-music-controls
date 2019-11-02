@@ -66,6 +66,28 @@ chrome.runtime.onMessage.addListener(response => {
   updatePopup(response)
 })
 
+/* Listen to keypresses in the popup like in the player tab: */
+/* TODO: handle Mute (key 0) */
+document.addEventListener('keydown', (e) => {
+  let action
+  if (e.code === 'Space' || e.code === 'KeyP')
+    action = 'play'
+  else if (e.code === 'KeyL')
+    action = 'next'
+  else if (e.code === 'KeyK')
+    action = 'prev'
+  else if (e.code === 'KeyF')
+    action = 'liked'
+  else if (e.code === 'KeyD')
+    action = 'disliked'
+  else if (e.key === '+')
+    action = 'volumeUp'
+  else if (e.key === '-')
+    action = 'volumeDown'
+  if (action)
+    chrome.tabs.sendMessage(state.yandexTabID, { action, isPopupAction: true })
+})
+
 /* Get Music state if possible: */
 let checkMusicState = () => {
   if (bg && bg.yandexTabID && bg.yandexTabID.length > 0) {
