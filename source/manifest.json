@@ -26,6 +26,12 @@
     ]
   },
   "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+Z"
+      },
+      "description": "Open the popup window"
+    },
     "next": {
       "suggested_key": {
         "default": "Ctrl+Shift+L"
