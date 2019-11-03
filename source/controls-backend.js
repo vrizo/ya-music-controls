@@ -70,20 +70,28 @@ chrome.runtime.onMessage.addListener(response => {
 /* TODO: handle Mute (key 0) */
 document.addEventListener('keydown', (e) => {
   let action
-  if (e.code === 'Space' || e.code === 'KeyP')
-    action = 'play'
-  else if (e.code === 'KeyL')
-    action = 'next'
-  else if (e.code === 'KeyK')
-    action = 'prev'
-  else if (e.code === 'KeyF')
-    action = 'liked'
-  else if (e.code === 'KeyD')
-    action = 'disliked'
-  else if (e.key === '+')
+  if (e.altKey || e.ctrlKey || e.metaKey)
+    return
+  if (e.key === '+')
     action = 'volumeUp'
   else if (e.key === '-')
     action = 'volumeDown'
+  else {
+    // Volume Up/Down (handled above) can be repeated, and Shift may be used to enter "+",
+    // so these are only checked here
+    if (e.repeat || e.shiftKey)
+      return
+    if (e.code === 'Space' || e.code === 'KeyP')
+      action = 'play'
+    else if (e.code === 'KeyL')
+      action = 'next'
+    else if (e.code === 'KeyK')
+      action = 'prev'
+    else if (e.code === 'KeyF')
+      action = 'liked'
+    else if (e.code === 'KeyD')
+      action = 'disliked'
+  }
   if (action)
     chrome.tabs.sendMessage(state.yandexTabID, { action, isPopupAction: true })
 })
