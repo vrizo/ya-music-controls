@@ -18,7 +18,7 @@ let state = {
   isPlaying: false,
   barType: null
 }
-let isMac = navigator.platform.indexOf('Mac') > -1
+let isMac = navigator.platform.includes('Mac')
 let ctrl = isMac ? 'Cmd' : 'Ctrl'
 let bg = chrome.extension.getBackgroundPage()
 
