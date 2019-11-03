@@ -39,6 +39,7 @@ let format = combination => {
 /* Listen to clicks in the popup: */
 document.addEventListener('click', e => {
   let action = e.target.id
+
   if (bg && bg.yandexTabID) state.yandexTabID = bg.yandexTabID[0]
   if (!e.target.classList.contains('button')) return
 
@@ -47,6 +48,7 @@ document.addEventListener('click', e => {
     window.close()
   } else if (action === 'message-bar__action') {
     if (state.onMessageBarAction) state.onMessageBarAction()
+
     state[state.barType + 'BarDismissed'] = true
     renderMessageBar()
     saveSettings()
@@ -61,39 +63,41 @@ document.addEventListener('click', e => {
   e.target.blur()
 })
 
+/* Listen to keypresses in the popup like in the player tab: */
+/* TODO: handle Mute (key 0) */
+document.addEventListener('keydown', e => {
+  let action
+
+  if (e.altKey || e.ctrlKey || e.metaKey) return
+
+  if (e.key === '+') {
+    action = 'volumeUp'
+  } else if (e.key === '-') {
+    action = 'volumeDown'
+  } else {
+    if (e.repeat || e.shiftKey) return
+
+    if (e.code === 'Space' || e.code === 'KeyP') {
+      action = 'play'
+    } else if (e.code === 'KeyL') {
+      action = 'next'
+    } else if (e.code === 'KeyK') {
+      action = 'prev'
+    } else if (e.code === 'KeyF') {
+      action = 'liked'
+    } else if (e.code === 'KeyD') {
+      action = 'disliked'
+    }
+  }
+
+  if (action) {
+    chrome.tabs.sendMessage(state.yandexTabID, { action, isPopupAction: true })
+  }
+})
+
 chrome.runtime.onMessage.addListener(response => {
   hideLoader()
   updatePopup(response)
-})
-
-/* Listen to keypresses in the popup like in the player tab: */
-/* TODO: handle Mute (key 0) */
-document.addEventListener('keydown', (e) => {
-  let action
-  if (e.altKey || e.ctrlKey || e.metaKey)
-    return
-  if (e.key === '+')
-    action = 'volumeUp'
-  else if (e.key === '-')
-    action = 'volumeDown'
-  else {
-    // Volume Up/Down (handled above) can be repeated, and Shift may be used to enter "+",
-    // so these are only checked here
-    if (e.repeat || e.shiftKey)
-      return
-    if (e.code === 'Space' || e.code === 'KeyP')
-      action = 'play'
-    else if (e.code === 'KeyL')
-      action = 'next'
-    else if (e.code === 'KeyK')
-      action = 'prev'
-    else if (e.code === 'KeyF')
-      action = 'liked'
-    else if (e.code === 'KeyD')
-      action = 'disliked'
-  }
-  if (action)
-    chrome.tabs.sendMessage(state.yandexTabID, { action, isPopupAction: true })
 })
 
 /* Get Music state if possible: */
@@ -198,6 +202,7 @@ let updatePopup = response => {
 
 window.onload = () => {
   let gettingSettings = browser.storage.local.get()
+
   gettingSettings.then(storage => {
     state.notificationsBarDismissed = storage.notificationsBarDismissed
     state.hotkeysBarDismissed = storage.hotkeysBarDismissed
