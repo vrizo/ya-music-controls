@@ -30,55 +30,55 @@
       "suggested_key": {
         "default": "Ctrl+Shift+L"
       },
-      "description": "Send a 'next' action"
+      "description": "__MSG_optionsListNext__"
     },
     "prev": {
       "suggested_key": {
         "default": "Ctrl+Shift+K"
       },
-      "description": "Send a 'prev' action"
+      "description": "__MSG_optionsListPrev__"
     },
     "forward": {
       "suggested_key": {
         "default": "Ctrl+Shift+8"
       },
-      "description": "Send a 'forward' action"
+      "description": "__MSG_optionsListForward__"
     },
     "backward": {
       "suggested_key": {
         "default": "Ctrl+Shift+7"
       },
-      "description": "Send a 'backward' action"
+      "description": "__MSG_optionsListBackward__"
     },
     "play": {
       "suggested_key": {
         "default": "Ctrl+Shift+O"
       },
-      "description": "Send a 'play' action (toggles play/pause)"
+      "description": "__MSG_optionsListPlay__"
     },
     "volumeUp": {
       "suggested_key": {
         "default": "Ctrl+Shift+Up"
       },
-      "description": "Send a 'volumeUp' action"
+      "description": "__MSG_optionsListVolumeUp__"
     },
     "volumeDown": {
       "suggested_key": {
         "default": "Ctrl+Shift+Down"
       },
-      "description": "Send a 'volumeDown' action"
+      "description": "__MSG_optionsListVolumeDown__"
     },
     "liked": {
       "suggested_key": {
         "default": "Ctrl+Shift+0"
       },
-      "description": "Send a 'liked' action"
+      "description": "__MSG_optionsListLiked__"
     },
     "disliked": {
       "suggested_key": {
         "default": "Ctrl+Shift+9"
       },
-      "description": "Send a 'disliked' action"
+      "description": "__MSG_optionsListDisliked__"
     }
   },
   "options_ui": {
