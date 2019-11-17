@@ -116,3 +116,17 @@ h2.options__title {
   border-color: #ff0039;
   box-shadow: 0 0 0 4px #ff7f9b;
 }
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+      background: #202023;
+      color: #f9f9fa;
+  }
+  .hotkeys_combination {
+    background: #4a4a4f;
+  }
+  a {
+      color: #f9f9fa;
+  }
+}
