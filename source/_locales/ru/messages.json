@@ -124,12 +124,11 @@
     "description": "Notifications checkbox"
   },
 
-
   "optionsListNotificationsDisabled": {
     "message": "🙈 Уведомления о текущем треке не отображаются",
     "description": "Notifications checkbox description disabled"
   },
-  
+
   "optionsListNotificationsEnabled": {
     "message": "🙉 Уведомления появляются при смене трека",
     "description": "Notifications checkbox description enabled"
@@ -159,7 +158,6 @@
     "message": "Перемотка назад:",
     "description": "Seek backward"
   },
-
 
   "optionsListLiked": {
     "message": "Нравится:",
