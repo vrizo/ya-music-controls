@@ -134,6 +134,11 @@
     "description": "Notifications checkbox description enabled"
   },
 
+  "optionsListOpen": {
+    "message": "Открыть всплывающее окно:",
+    "description": "Open the popup window"
+  },
+
   "optionsListPlay": {
     "message": "Проигрывание или пауза:",
     "description": "Play or pause"
