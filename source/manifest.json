@@ -28,9 +28,10 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default": "Alt+Z"
+        "default": "Alt+Z",
+        "mac": "MacCtrl+Z"
       },
-      "description": "Open the popup window"
+      "description": "__MSG_optionsListOpen__"
     },
     "next": {
       "suggested_key": {
