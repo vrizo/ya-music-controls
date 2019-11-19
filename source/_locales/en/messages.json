@@ -20,7 +20,7 @@
   },
 
   "optionsHotkeys": {
-    "message": "Hotkeys",
+    "message": "Keyboard shortcuts",
     "description": "Options page hotkeys subtitle"
   },
 
@@ -30,7 +30,7 @@
   },
 
   "optionsResetConfirm": {
-    "message": "Are you sure you want to reset hotkeys config?",
+    "message": "Are you sure you want to reset keyboard shortcuts config?",
     "description": "Reset Options confirmation"
   },
 
@@ -185,7 +185,7 @@
   },
 
   "optionsSave": {
-    "message": "Save hotkeys",
+    "message": "Save shortcuts",
     "description": "Save settings"
   },
 
