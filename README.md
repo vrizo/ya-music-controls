@@ -1,4 +1,4 @@
-# Yandex Music Controls web extension
+# Yandex Music Controls Web Extension
 
 <img src="/images/logo-hd.png" align="center" height="439" width="450" alt="Music Controls Logo" >
 
@@ -9,12 +9,12 @@ It works perfectly with the latest Firefox browser.
 
 It’s available in English :gb: and Russian :ru:.
 
-## Packaged versions
+## Packaged Versions
 
 * [Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/yandex-music-controls/)
 * Chrome Store — not available due to required $5 payment
 
-## How to use
+## How to Use
 
 1. Install the plugin
 2. Go to the [Yandex Music site](https://music.yandex.ru/) and click the Yandex Music Controls icon. Or click on the icon and press the button "Open Yandex.Music"
@@ -27,7 +27,7 @@ It’s available in English :gb: and Russian :ru:.
 * and Player information (track and artist name, album art)
 * It includes Keyboard Shortcuts
 
-## Development usage
+## Development Usage
 
 1. Run `yarn install` to install all necessary packages
 2. Add `sources/manifest.json` as a temporary plugin in `about:debugging`
@@ -39,7 +39,7 @@ $ zip -d yandex_music_controls-*.zip "*/*.DS_Store"
 $ zip -d yandex_music_controls-*.zip "__MACOSX/*"
 ```
 
-## Test translations
+## Translations Testing
 
 1. Go to `about:config`
 2. Add `intl.locale.requested` with `en` or `ru` values
@@ -62,8 +62,8 @@ Please create an Issue or contact [me by email](mailto:kb@kernel-it.ru).
 
 ## Special thanks
 
-:octocat: [Alexander Marfitsin @marfitsin](http://marfitsin.com) — Text Refactoring
-:octocat: [@PeterMinin](https://github.com/PeterMinin)
+* :octocat: [Alexander Marfitsin @marfitsin](http://marfitsin.com) — Text Refactoring
+* :octocat: [@PeterMinin](https://github.com/PeterMinin)
 
 ## Changelog
 
