@@ -1,16 +1,16 @@
 {
   "extensionName": {
-    "message": "Yandex Music Controls",
+    "message": "Yandex Music Controls — удобный плеер с горячими клавишами",
     "description": "Name of the extension"
   },
 
   "extensionDescription": {
-    "message": "Плагин добавляет кнопки на панель инструментов, позволяющие управлять Яндекс Музыкой из любой вкладки",
+    "message": "Управляйте Яндекс.Музыкой в одно нажатие. Переключайте и отмечайте понравившиеся треки из любой вкладки в панели инструментов или с помощью горячих клавиш. Получайте уведомления при переключении треков.",
     "description": "Description of the extension"
   },
 
   "actionTitle": {
-    "message": "Я.Музыка \u2014 управление",
+    "message": "Yandex Music Controls",
     "description": "Title of the icon button"
   },
 
@@ -35,7 +35,7 @@
   },
 
   "optionsYouCanSet": {
-    "message": "Вы можете назначить свою комбинацию на каждое действие.",
+    "message": "Вы можете назначить любую комбинацию на каждое действие.",
     "description": "Options page description"
   },
 
@@ -65,7 +65,7 @@
   },
 
   "optionsRulesRequired": {
-    "message": "Комбинации обязательно должны включать",
+    "message": "Комбинации должны содержать",
     "description": "Rules: required keys"
   },
 
@@ -74,19 +74,19 @@
     "description": "Or"
   },
 
+  "optionsRulesCannot": {
+    "message": "Нельзя использовать клавиши",
+    "description": "Can not"
+  },
+
   "optionsRulesSimultaneously": {
-    "message": "Одновременно",
+    "message": "вместе",
     "description": "Simultaneously"
   },
 
   "optionsRulesAnd": {
     "message": " и",
     "description": "And"
-  },
-
-  "optionsRulesCannot": {
-    "message": "нельзя",
-    "description": "Can not"
   },
 
   "optionsRulesAllowed": {
@@ -100,23 +100,18 @@
   },
 
   "optionsRulesAlsoAllowed": {
-    "message": "Хотя можно использовать клавиши",
-    "description": "Also allowed …"
+    "message": "или можно использовать клавиши ",
+    "description": "or you can use …"
   },
 
   "optionsRulesWithout": {
-    "message": "и без",
+    "message": "без",
     "description": "… without …"
   },
 
   "optionsRulesMultimedia": {
-    "message": "Доступы и мультимедийные клавиши: ",
-    "description": "You can use media keys"
-  },
-
-  "optionsRulesMultimediaMac": {
-    "message": "Однако, Firefox пока что не поддерживает мультимедийные клавиши в macOS.",
-    "description": "Multimedia keys are not supported in macOS"
+    "message": "Мультимедийные клавиши пока не поддерживаются",
+    "description": "You can not use media keys"
   },
 
   "optionsListNotifications": {
@@ -135,12 +130,12 @@
   },
 
   "optionsListOpen": {
-    "message": "Открыть всплывающее окно:",
+    "message": "Открыть плеер:",
     "description": "Open the popup window"
   },
 
   "optionsListPlay": {
-    "message": "Проигрывание или пауза:",
+    "message": "Воспроизведение и пауза:",
     "description": "Play or pause"
   },
 
@@ -155,22 +150,22 @@
   },
 
   "optionsListForward": {
-    "message": "Перемотка вперёд:",
+    "message": "На 5 с вперёд:",
     "description": "Seek forward"
   },
 
   "optionsListBackward": {
-    "message": "Перемотка назад:",
+    "message": "На 5 с назад:",
     "description": "Seek backward"
   },
 
   "optionsListLiked": {
-    "message": "Нравится:",
+    "message": "Отметить как понравившийся:",
     "description": "Like track"
   },
 
   "optionsListDisliked": {
-    "message": "Не нравится:",
+    "message": "Отметить как не понравившийся:",
     "description": "Dislike track"
   },
 
@@ -185,12 +180,12 @@
   },
 
   "optionsSave": {
-    "message": "Сохранить горячие клавиши",
+    "message": "Сохранить настройки горячих клавиш",
     "description": "Save settings"
   },
 
   "controlsCover": {
-    "message": "Обложка альбома — ",
+    "message": "Обложка альбома ",
     "description": "Album cover"
   },
 
@@ -200,12 +195,12 @@
   },
 
   "controlsOpen": {
-    "message": "Открыть Я.Музыку",
+    "message": "Открыть Яндекс.Музыку",
     "description": "Open Yandex.Music tab button"
   },
 
   "controlsDisliked": {
-    "message": "Не нравится [$KEY$]",
+    "message": "Отметить как не понравившийся [$KEY$]",
     "description": "Dislike button",
     "placeholders": {
       "key" : {
@@ -215,7 +210,7 @@
   },
 
   "controlsLiked": {
-    "message": "Нравится [$KEY$]",
+    "message": "Отметить как понравившийся [$KEY$]",
     "description": "Like button",
     "placeholders": {
       "key" : {
@@ -225,7 +220,7 @@
   },
 
   "controlsPlay": {
-    "message": "Играть [$KEY$]",
+    "message": "Воспроизведение [$KEY$]",
     "description": "Play button",
     "placeholders": {
       "key" : {

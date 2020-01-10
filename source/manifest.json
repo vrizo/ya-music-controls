@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
-  "version": "1.7",
+  "version": "1.8",
   "description": "__MSG_extensionDescription__",
   "homepage_url": "http://squirrel-research.ru",
   "default_locale": "en",
@@ -96,7 +96,6 @@
     {
       "matches": [
         "*://*.music.yandex.ru/*",
-        "*://*.music.yandex.net/*",
         "*://*.music.yandex.com/*",
         "*://*.music.yandex.ua/*",
         "*://*.music.yandex.by/*"

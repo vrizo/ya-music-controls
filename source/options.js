@@ -1,11 +1,10 @@
 /**
  * Options script for Yandex Music player control.
  * Author Vitalii Rizo
- * http://squirrel-research.ru
  * https://github.com/vrizo/ya-music-controls
- * (c) 2016–2019
+ * (c) 2016–2020
  * Yandex Music Player Control Plugin
- * v.1.7
+ * v.1.8
  */
 
 'use strict'

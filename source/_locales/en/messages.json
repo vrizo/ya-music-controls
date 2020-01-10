@@ -5,12 +5,12 @@
   },
 
   "extensionDescription": {
-    "message": "The plugin adds buttons to the toolbar to control Yandex.Music from any tab",
+    "message": "The plugin adds buttons to the toolbar and keyboard shortcuts to control Yandex.Music from any tab",
     "description": "Description of the extension"
   },
 
   "actionTitle": {
-    "message": "Y.Music \u2014 controls",
+    "message": "Yandex Music Controls",
     "description": "Title of the icon button"
   },
 
@@ -74,19 +74,19 @@
     "description": "Or"
   },
 
-  "optionsRulesSimultaneously": {
-    "message": "",
-    "description": "Simultaneously (no text in English)"
-  },
-
   "optionsRulesAnd": {
     "message": ", and",
     "description": "And"
   },
 
   "optionsRulesCannot": {
-    "message": "can’t be used simultaneously",
+    "message": "You can’t use",
     "description": "Can not be used simultaneously"
+  },
+
+  "optionsRulesSimultaneously": {
+    "message": "simultaneously",
+    "description": "Simultaneously"
   },
 
   "optionsRulesAllowed": {
@@ -100,8 +100,8 @@
   },
 
   "optionsRulesAlsoAllowed": {
-    "message": "However, you can use",
-    "description": "Also allowed …"
+    "message": "or you can use",
+    "description": "or you can use …"
   },
 
   "optionsRulesWithout": {
@@ -110,13 +110,8 @@
   },
 
   "optionsRulesMultimedia": {
-    "message": "You can use media keys: ",
-    "description": "You can use media keys"
-  },
-
-  "optionsRulesMultimediaMac": {
-    "message": "Unfortunately, Firefox doesn’t support multimedia keys yet in macOS.",
-    "description": "Multimedia keys are not supported in macOS"
+    "message": "Unfortunately, Firefox doesn’t support multimedia keys yet",
+    "description": "Multimedia keys are not supported"
   },
 
   "optionsListNotifications": {
@@ -135,8 +130,8 @@
   },
 
   "optionsListOpen": {
-    "message": "Open the popup window:",
-    "description": "Open the popup window"
+    "message": "Open the popup player:",
+    "description": "Open the popup player"
   },
 
   "optionsListPlay": {

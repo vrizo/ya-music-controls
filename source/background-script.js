@@ -2,11 +2,10 @@
  * Listen for messages from Controls.js.
  * The aim is to get Tab ID of Yandex Music.
  * Author Vitalii Rizo
- * http://squirrel-research.ru
  * https://github.com/vrizo/ya-music-controls
- * (c) 2016–2019
+ * (c) 2016–2020
  * Yandex Music Player Control Plugin
- * v.1.7
+ * v.1.8
  */
 
 'use strict'
