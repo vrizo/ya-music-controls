@@ -1,9 +1,8 @@
 /**
  * Listen for clicks in the popup.
  * Author Vitalii Rizo
- * http://squirrel-research.ru
  * https://github.com/vrizo/ya-music-controls
- * (c) 2016–2019
+ * (c) 2016–2020
  * Yandex Music Player Control Plugin
  * v.1.7
  */
@@ -64,7 +63,6 @@ document.addEventListener('click', e => {
 })
 
 /* Listen to keypresses in the popup like in the player tab: */
-/* TODO: handle Mute (key 0) */
 document.addEventListener('keydown', e => {
   let action
 
@@ -227,12 +225,17 @@ window.onload = () => {
   })
 }
 
+let loaderTimer
+
 let showLoader = () => {
-  let loader = document.getElementById('loader')
-  loader.style.opacity = 1
+  loaderTimer = setTimeout(() => {
+    let loader = document.getElementById('loader')
+    loader.style.opacity = 1
+  }, 200)
 }
 
 let hideLoader = () => {
+  clearTimeout(loaderTimer)
   let loader = document.getElementById('loader')
   loader.style.opacity = 0
 }
