@@ -155,11 +155,20 @@ let updatePopup = response => {
 
     if (typeof response.title !== 'undefined') {
       /* Artists list */
-      let artists = ''
-      response.artists.forEach(artist => {
-        artists +=
-          `<a href="https://${ response.hostname + artist.link }"
-              target="_blank">${ artist.title }</a>, `
+      let artists = document.createElement('div')
+
+      response.artists.forEach((a, index) => {
+        let artistLink = document.createElement('a')
+        let separator = document.createTextNode(', ')
+
+        artistLink.setAttribute('href', 'https://' + response.hostname + a.link)
+        artistLink.setAttribute('target', '_blank')
+        artistLink.textContent = a.title
+        artists.appendChild(artistLink)
+
+        if (index + 1 < response.artists.length) {
+          artists.appendChild(separator)
+        }
       })
 
       /* Album art */
@@ -172,7 +181,8 @@ let updatePopup = response => {
 
       /* Track details */
       trackName.textContent = response.title
-      artistName.innerHTML = artists.slice(0, -2)
+      while (artistName.firstChild) artistName.firstChild.remove()
+      artistName.appendChild(artists)
       dislike.className = 'button button-ghost enabled-' + response.disliked
       like.className = 'button button-ghost enabled-' + response.liked
     } else {
