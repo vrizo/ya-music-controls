@@ -49,7 +49,6 @@ $ zip -d yandex_music_controls-*.zip "__MACOSX/*"
 
 * Add 'Skip' button to Notifications when [Firefox add this feature](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/notifications/NotificationOptions)
 * Reduce Notifications life time when Firefox add this feature
-* Get rid of unsafe assignment to innerHTML
 * Add :mute: Mute button
 * Auto packager
 * Album, Track and Author links — redesign according to the [Photon](https://design.firefox.com/photon/components/links.html)

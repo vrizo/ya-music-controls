@@ -363,8 +363,19 @@ let renderMessageBar = () => {
   `
 
   if (content.text) {
+    let parser = new DOMParser()
+    let parsed = parser.parseFromString(output, 'text/html')
+    let tags = parsed.getElementsByTagName('body')[0].childNodes
+
+    while (messageBar.firstChild) {
+      messageBar.firstChild.remove()
+    }
+
+    for (let tag of tags) {
+      messageBar.appendChild(tag)
+    }
+
     messageBar.classList.add('is-shown')
-    messageBar.innerHTML = output
   } else {
     messageBar.classList.remove('is-shown')
   }
