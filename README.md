@@ -26,6 +26,7 @@ It’s available in English :gb: and Russian :ru:.
 * This plugin provides Music control buttons (Play/Pause, Next, Previous, Like/Unlike) :musical_note:
 * and Player information (track and artist name, album art)
 * It includes Keyboard Shortcuts
+* Integration with operating system multimedia controls. Which also allows you to use a multimedia keyboard
 
 ## Development Usage
 
