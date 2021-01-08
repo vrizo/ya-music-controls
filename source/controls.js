@@ -34,8 +34,8 @@ let sendPlayerState = () => {
 
   chrome.runtime.sendMessage({ state })
   isPopupAction = false
-  
-  updateMediaSessionState();
+
+  updateMediaSessionState()
 }
 
 /* Listen to commands from buttons: */
@@ -87,61 +87,63 @@ chrome.runtime.onMessage.addListener(request => {
 
 const updateMediaSessionState = () => {
   if ('mediaSession' in navigator) {
-    let api = window.wrappedJSObject.externalAPI;
-    navigator.mediaSession.playbackState = api.isPlaying() ? 'playing' : 'paused';
+    let api = window.wrappedJSObject.externalAPI
+    navigator.mediaSession.playbackState =
+        api.isPlaying() ? 'playing' : 'paused'
 
-    const track = api.getCurrentTrack();
-    const urlTpl = 'https://' + state.cover;
-    const artworks = ['100x100', '200x200', '400x400'];
+    let track = api.getCurrentTrack()
+    let urlTpl = 'https://' + state.cover
+    let artworks = ['100x100', '200x200', '400x400']
 
-    navigator.mediaSession.metadata = new MediaMetadata({
+    navigator.mediaSession.metadata = new window.MediaMetadata({
       title: track.title,
       artist: [...track.artists].map(artist => artist.title).join(', '),
       album: track.album.title,
-      artwork: artworks.map(size => ({src: urlTpl.replace('%%', size), sizes: size, type: 'image/jpeg'})),
-    });
+      artwork: artworks.map(size =>
+        ({ src: urlTpl.replace('%%', size), sizes: size, type: 'image/jpeg' }))
+    })
   }
-};
+}
 
 const initializeMediaSession = () => {
-  const api = window.wrappedJSObject.externalAPI;
-  const actionHandlers = [
+  let api = window.wrappedJSObject.externalAPI
+  let actionHandlers = [
     ['play', () => {
-        if (!api.isPlaying()) {
-          api.togglePause();
-        }
-      }],
+      if (!api.isPlaying()) {
+        api.togglePause()
+      }
+    }],
     ['pause', () => {
-        if (api.isPlaying()) {
-          api.togglePause();
-        }
-      }],
+      if (api.isPlaying()) {
+        api.togglePause()
+      }
+    }],
     ['stop', () => {
-        if (api.isPlaying()) {
-          api.togglePause();
-        }
-        api.setPosition(0);
-      }],
+      if (api.isPlaying()) {
+        api.togglePause()
+      }
+      api.setPosition(0)
+    }],
     ['previoustrack', () => {
-        if (api.getPrevTrack()) {
-          api.prev();
-        }
-      }],
+      if (api.getPrevTrack()) {
+        api.prev()
+      }
+    }],
     ['nexttrack', () => {
-        if (api.getNextTrack()) {
-          api.next();
-        }
-      }],
-  ];
+      if (api.getNextTrack()) {
+        api.next()
+      }
+    }]
+  ]
 
-  for (const [action, handler] of actionHandlers) {
+  for (let [action, handler] of actionHandlers) {
     try {
-      navigator.mediaSession.setActionHandler(action, handler);
+      navigator.mediaSession.setActionHandler(action, handler)
     } catch (error) {
-      console.log(`The media session action "${action}" is not supported yet.`);
+      console.log(`The media session action "${ action }" is not supported`)
     }
   }
-};
+}
 
 let initializeMusicControls = () => {
   window.MutationObserver = window.MutationObserver ||
@@ -163,8 +165,8 @@ let initializeMusicControls = () => {
   }
   observer.observe(target, config)
 
-  initializeMediaSession();
-  updateMediaSessionState();
+  initializeMediaSession()
+  updateMediaSessionState()
 }
 
 /* After Yandex Music page is loaded create Observer to detect track changes: */
