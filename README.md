@@ -26,7 +26,7 @@ It’s available in English :gb: and Russian :ru:.
 * This plugin provides Music control buttons (Play/Pause, Next, Previous, Like/Unlike) :musical_note:
 * and Player information (track and artist name, album art)
 * It includes Keyboard Shortcuts
-* Integration with operating system multimedia controls. Which also allows you to use a multimedia keyboard
+* Integration with OS-level multimedia controls. Which also allows you to use a multimedia keyboard
 
 ## Development Usage
 
@@ -63,11 +63,16 @@ Please create an Issue or contact [me by email](mailto:kb@kernel-it.ru).
 ## Special thanks
 
 * :octocat: [Alexander Marfitsin @marfitsin](http://marfitsin.com) — Text Refactoring
+* :octocat: [@idashevskii](https://github.com/idashevskii)
 * :octocat: [@PeterMinin](https://github.com/PeterMinin)
 
 ## Changelog
 
-### 1.8
+### 1.9
+* Integration with operating system multimedia controls
+  Thanks to [@idashevskii](https://github.com/idashevskii)
+* Homepage update
+### 1.9
 * Added shortcut to open the plugin (Alt + Z ⊞/ Ctrl + Z )
 * Added shortcuts in the plugin window: K, L, P, F, D, +, -
   Thanks to [@PeterMinin](https://github.com/PeterMinin)

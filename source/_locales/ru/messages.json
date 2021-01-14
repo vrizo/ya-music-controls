@@ -110,8 +110,8 @@
   },
 
   "optionsRulesMultimedia": {
-    "message": "Мультимедийные клавиши пока не поддерживаются",
-    "description": "You can not use media keys"
+    "message": "Мультимедиа клавиши работают сразу",
+    "description": "OS-level multimedia keys are supported by default"
   },
 
   "optionsListNotifications": {

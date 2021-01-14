@@ -110,8 +110,8 @@
   },
 
   "optionsRulesMultimedia": {
-    "message": "Unfortunately, Firefox doesn’t support multimedia keys yet",
-    "description": "Multimedia keys are not supported"
+    "message": "OS-level multimedia keys are supported by default",
+    "description": "OS-level multimedia keys are supported by default"
   },
 
   "optionsListNotifications": {
