@@ -69,7 +69,7 @@ Please create an Issue or contact [me by email](mailto:kb@kernel-it.ru).
 ## Changelog
 
 ### 1.9
-* Integration with operating system multimedia controls
+* Integration with operating system multimedia controls (global hotkeys!)
   Thanks to [@idashevskii](https://github.com/idashevskii)
 * Homepage update
 * Upgrade dependencies
