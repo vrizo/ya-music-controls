@@ -2,9 +2,9 @@
  * Options script for Yandex Music player control.
  * Author Vitalii Rizo
  * https://github.com/vrizo/ya-music-controls
- * (c) 2016–2020
+ * (c) 2016–2021
  * Yandex Music Player Control Plugin
- * v.1.8
+ * v.1.9
  */
 
 'use strict'
@@ -40,11 +40,15 @@ let deformat = combination => {
 
 let validate = evt => {
   let combination = deformat(evt.target.value)
-  let rule1 = new RegExp('^\\s*(Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
-    '\\s*(Shift\\s*\\+\\s*)?([A-Z0-9]|Comma|Period|Home|End|PageUp|' +
-    'PageDown|Space|Insert|Delete|Up|Down|Left|Right)\\s*$')
-  let rule2 = new RegExp('^\\s*((Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
-    '\\s*)?(Shift\\s*\\+\\s*)?(F[1-9]|F1[0-2])\\s*$')
+  let rule1 = new RegExp(
+    '^\\s*(Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
+      '\\s*(Shift\\s*\\+\\s*)?([A-Z0-9]|Comma|Period|Home|End|PageUp|' +
+      'PageDown|Space|Insert|Delete|Up|Down|Left|Right)\\s*$'
+  )
+  let rule2 = new RegExp(
+    '^\\s*((Alt|Ctrl|Command|MacCtrl)\\s*\\+' +
+      '\\s*)?(Shift\\s*\\+\\s*)?(F[1-9]|F1[0-2])\\s*$'
+  )
 
   if (rule1.test(combination) || rule2.test(combination)) {
     evt.target.classList.remove('option__input-error')

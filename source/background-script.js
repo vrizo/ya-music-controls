@@ -3,9 +3,9 @@
  * The aim is to get Tab ID of Yandex Music.
  * Author Vitalii Rizo
  * https://github.com/vrizo/ya-music-controls
- * (c) 2016–2020
+ * (c) 2016–2021
  * Yandex Music Player Control Plugin
- * v.1.8
+ * v.1.9
  */
 
 'use strict'

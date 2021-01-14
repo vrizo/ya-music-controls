@@ -2,9 +2,9 @@
  * Listen for clicks in the popup.
  * Author Vitalii Rizo
  * https://github.com/vrizo/ya-music-controls
- * (c) 2016–2020
+ * (c) 2016–2021
  * Yandex Music Player Control Plugin
- * v.1.8
+ * v.1.9
  */
 
 'use strict'
@@ -144,8 +144,10 @@ let updatePopup = response => {
     state.isPlaying = response.isPlaying
     state.isRadio = response.prev === null
 
-    play.setAttribute('class',
-      'button button-ghost ' + (state.isPlaying ? 'pause' : ''))
+    play.setAttribute(
+      'class',
+      'button button-ghost ' + (state.isPlaying ? 'pause' : '')
+    )
     response.next || state.isRadio
       ? next.removeAttribute('disabled')
       : next.setAttribute('disabled', 'disabled')
@@ -256,7 +258,8 @@ let renderShare = () => {
   let counter = state.pluginCount
   let lang = browser.i18n.getUILanguage().substr(0, 2)
 
-  state.isShareShown = (counter > 15 && counter < 25) ||
+  state.isShareShown =
+    (counter > 15 && counter < 25) ||
     (counter > 85 && counter < 90) ||
     (counter > 165 && counter < 170)
 
@@ -281,10 +284,13 @@ let renderHotkeys = () => {
 
     dislike.setAttribute('title', t('controlsDisliked', format(cmds.disliked)))
     like.setAttribute('title', t('controlsLiked', format(cmds.liked)))
-    play.setAttribute('title', state.isPlaying
-      ? t('controlsPause', format(cmds.play))
-      : t('controlsPlay', format(cmds.play)))
-    open.setAttribute('title', t('controlsOpen') + ` [${ format(cmds.play) }]`)
+    play.setAttribute(
+      'title',
+      state.isPlaying
+        ? t('controlsPause', format(cmds.play))
+        : t('controlsPlay', format(cmds.play))
+    )
+    open.setAttribute('title', t('controlsOpen') + ` [${format(cmds.play)}]`)
     prev.setAttribute('title', t('controlsPrev', format(cmds.prev)))
     next.setAttribute('title', t('controlsNext', format(cmds.next)))
   })
@@ -332,16 +338,16 @@ let renderMessageBar = () => {
       <object type="image/svg+xml" data="icons/info.svg" tabindex="-1"></object>
     </div>
     <div class="message-bar__text"
-         style="width: ${ content.width ? content.width : 'auto' }"
+         style="width: ${content.width ? content.width : 'auto'}"
     >
-      ${ content.text }
+      ${content.text}
   `
 
   if (content.action) {
     output += `
       <div class="message-bar__action">
         <button class="button button-micro" id="message-bar__action">
-          ${ content.action }
+          ${content.action}
         </button>
       </div>
     `
@@ -351,7 +357,7 @@ let renderMessageBar = () => {
     </div>
     <div class="message-bar__dismiss">
       <button class="button button-micro button-ghost"
-              title="${ t('messagesDismiss') }"
+              title="${t('messagesDismiss')}"
               id="message-bar__dismiss"
       >
         <object data="icons/close.svg"

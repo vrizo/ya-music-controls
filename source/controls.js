@@ -2,9 +2,9 @@
  * Main script for Yandex Music player control.
  * Author Vitalii Rizo
  * https://github.com/vrizo/ya-music-controls
- * (c) 2016–2020
+ * (c) 2016–2021
  * Yandex Music Player Control Plugin
- * v.1.8
+ * v.1.9
  */
 
 'use strict'
@@ -88,8 +88,9 @@ chrome.runtime.onMessage.addListener(request => {
 const updateMediaSessionState = () => {
   if ('mediaSession' in navigator) {
     let api = window.wrappedJSObject.externalAPI
-    navigator.mediaSession.playbackState =
-        api.isPlaying() ? 'playing' : 'paused'
+    navigator.mediaSession.playbackState = api.isPlaying()
+      ? 'playing'
+      : 'paused'
 
     let track = api.getCurrentTrack()
     let urlTpl = 'https://' + state.cover
@@ -99,8 +100,11 @@ const updateMediaSessionState = () => {
       title: track.title,
       artist: [...track.artists].map(artist => artist.title).join(', '),
       album: track.album.title,
-      artwork: artworks.map(size =>
-        ({ src: urlTpl.replace('%%', size), sizes: size, type: 'image/jpeg' }))
+      artwork: artworks.map(size => ({
+        src: urlTpl.replace('%%', size),
+        sizes: size,
+        type: 'image/jpeg'
+      }))
     })
   }
 }
@@ -108,54 +112,72 @@ const updateMediaSessionState = () => {
 const initializeMediaSession = () => {
   let api = window.wrappedJSObject.externalAPI
   let actionHandlers = [
-    ['play', () => {
-      if (!api.isPlaying()) {
-        api.togglePause()
+    [
+      'play',
+      () => {
+        if (!api.isPlaying()) {
+          api.togglePause()
+        }
       }
-    }],
-    ['pause', () => {
-      if (api.isPlaying()) {
-        api.togglePause()
+    ],
+    [
+      'pause',
+      () => {
+        if (api.isPlaying()) {
+          api.togglePause()
+        }
       }
-    }],
-    ['stop', () => {
-      if (api.isPlaying()) {
-        api.togglePause()
+    ],
+    [
+      'stop',
+      () => {
+        if (api.isPlaying()) {
+          api.togglePause()
+        }
+        api.setPosition(0)
       }
-      api.setPosition(0)
-    }],
-    ['previoustrack', () => {
-      if (api.getPrevTrack()) {
-        api.prev()
+    ],
+    [
+      'previoustrack',
+      () => {
+        if (api.getPrevTrack()) {
+          api.prev()
+        }
       }
-    }],
-    ['nexttrack', () => {
-      if (api.getNextTrack()) {
-        api.next()
+    ],
+    [
+      'nexttrack',
+      () => {
+        if (api.getNextTrack()) {
+          api.next()
+        }
       }
-    }]
+    ]
   ]
 
   for (let [action, handler] of actionHandlers) {
     try {
       navigator.mediaSession.setActionHandler(action, handler)
-    } catch (error) {
-      console.log(`The media session action "${ action }" is not supported`)
+    } catch {
+      console.log(`The media session action "${action}" is not supported`)
     }
   }
 }
 
 let initializeMusicControls = () => {
-  window.MutationObserver = window.MutationObserver ||
-  window.WebKitMutationObserver ||
-  window.MozMutationObserver
+  window.MutationObserver =
+    window.MutationObserver ||
+    window.WebKitMutationObserver ||
+    window.MozMutationObserver
   /* Find the body element */
   let target = document.querySelector('body')
   /* Create an observer instance */
   let observer = new MutationObserver(mutation => {
     /* If changes caused by track then: */
-    if (mutation[0].attributeName === 'data-unity-state' ||
-        mutation[0].attributeName === 'data-unity-supports') {
+    if (
+      mutation[0].attributeName === 'data-unity-state' ||
+      mutation[0].attributeName === 'data-unity-supports'
+    ) {
       sendPlayerState()
     }
   })
