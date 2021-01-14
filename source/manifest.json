@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
-  "version": "1.8",
+  "version": "1.9",
   "description": "__MSG_extensionDescription__",
-  "homepage_url": "http://squirrel-research.ru",
+  "homepage_url": "https://github.com/vrizo/ya-music-controls",
   "default_locale": "en",
   "icons": {
     "48": "icon-48.png",
