@@ -53,5 +53,6 @@ chrome-user-data
 *.sublime-project
 *.sublime-workspace
 .idea
+nbproject/
 *.iml
 .vscode

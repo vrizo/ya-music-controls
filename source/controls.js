@@ -34,6 +34,8 @@ let sendPlayerState = () => {
 
   chrome.runtime.sendMessage({ state })
   isPopupAction = false
+
+  updateMediaSessionState()
 }
 
 /* Listen to commands from buttons: */
@@ -83,6 +85,66 @@ chrome.runtime.onMessage.addListener(request => {
   }
 })
 
+const updateMediaSessionState = () => {
+  if ('mediaSession' in navigator) {
+    let api = window.wrappedJSObject.externalAPI
+    navigator.mediaSession.playbackState =
+        api.isPlaying() ? 'playing' : 'paused'
+
+    let track = api.getCurrentTrack()
+    let urlTpl = 'https://' + state.cover
+    let artworks = ['100x100', '200x200', '400x400']
+
+    navigator.mediaSession.metadata = new window.MediaMetadata({
+      title: track.title,
+      artist: [...track.artists].map(artist => artist.title).join(', '),
+      album: track.album.title,
+      artwork: artworks.map(size =>
+        ({ src: urlTpl.replace('%%', size), sizes: size, type: 'image/jpeg' }))
+    })
+  }
+}
+
+const initializeMediaSession = () => {
+  let api = window.wrappedJSObject.externalAPI
+  let actionHandlers = [
+    ['play', () => {
+      if (!api.isPlaying()) {
+        api.togglePause()
+      }
+    }],
+    ['pause', () => {
+      if (api.isPlaying()) {
+        api.togglePause()
+      }
+    }],
+    ['stop', () => {
+      if (api.isPlaying()) {
+        api.togglePause()
+      }
+      api.setPosition(0)
+    }],
+    ['previoustrack', () => {
+      if (api.getPrevTrack()) {
+        api.prev()
+      }
+    }],
+    ['nexttrack', () => {
+      if (api.getNextTrack()) {
+        api.next()
+      }
+    }]
+  ]
+
+  for (let [action, handler] of actionHandlers) {
+    try {
+      navigator.mediaSession.setActionHandler(action, handler)
+    } catch (error) {
+      console.log(`The media session action "${ action }" is not supported`)
+    }
+  }
+}
+
 let initializeMusicControls = () => {
   window.MutationObserver = window.MutationObserver ||
   window.WebKitMutationObserver ||
@@ -102,6 +164,9 @@ let initializeMusicControls = () => {
     attributes: true
   }
   observer.observe(target, config)
+
+  initializeMediaSession()
+  updateMediaSessionState()
 }
 
 /* After Yandex Music page is loaded create Observer to detect track changes: */
