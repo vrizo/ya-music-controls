@@ -72,7 +72,9 @@ Please create an Issue or contact [me by email](mailto:kb@kernel-it.ru).
 * Integration with operating system multimedia controls
   Thanks to [@idashevskii](https://github.com/idashevskii)
 * Homepage update
-### 1.9
+* Upgrade dependencies
+* Lint the code and use Github Actions for tests
+### 1.8
 * Added shortcut to open the plugin (Alt + Z ⊞/ Ctrl + Z )
 * Added shortcuts in the plugin window: K, L, P, F, D, +, -
   Thanks to [@PeterMinin](https://github.com/PeterMinin)
